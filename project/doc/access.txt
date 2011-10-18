@@ -1,0 +1,5 @@
+HOSTING
+
+panel: http://cpanel.horizon-host.com
+pma: http://sql2.horizon-host.com/phpmyadmin/index.php?db=u785700299_finances&lang=pl-utf-8&convcharset=utf-8
+url: symfony-test.horizon-host.com

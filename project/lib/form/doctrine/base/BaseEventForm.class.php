@@ -5,9 +5,9 @@
  *
  * @method Event getObject() Returns the current form's model object
  *
- * @package    test
+ * @package    finances
  * @subpackage form
- * @author     Your name here
+ * @author     Tomasz Ducin <tomasz.ducin@gmail.com>
  * @version    SVN: $Id: sfDoctrineFormGeneratedTemplate.php 29553 2010-05-20 14:33:00Z Kris.Wallsmith $
  */
 abstract class BaseEventForm extends BaseFormDoctrine
@@ -17,7 +17,6 @@ abstract class BaseEventForm extends BaseFormDoctrine
     $this->setWidgets(array(
       'id'          => new sfWidgetFormInputHidden(),
       'category_id' => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Category'), 'add_empty' => false)),
-      'place'       => new sfWidgetFormInputText(),
       'cash_total'  => new sfWidgetFormInputText(),
       'created_at'  => new sfWidgetFormDateTime(),
       'created_by'  => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Creator'), 'add_empty' => true)),
@@ -26,7 +25,6 @@ abstract class BaseEventForm extends BaseFormDoctrine
     $this->setValidators(array(
       'id'          => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id')), 'empty_value' => $this->getObject()->get('id'), 'required' => false)),
       'category_id' => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Category'))),
-      'place'       => new sfValidatorString(array('max_length' => 64)),
       'cash_total'  => new sfValidatorNumber(),
       'created_at'  => new sfValidatorDateTime(),
       'created_by'  => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Creator'), 'required' => false)),

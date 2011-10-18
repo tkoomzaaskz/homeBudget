@@ -7,13 +7,27 @@
  */
 class EventTable extends Doctrine_Table
 {
-    /**
-     * Returns an instance of this class.
-     *
-     * @return object EventTable
-     */
-    public static function getInstance()
-    {
-        return Doctrine_Core::getTable('Event');
-    }
+  /**
+   * Returns an instance of this class.
+   *
+   * @return object EventTable
+   */
+  public static function getInstance()
+  {
+    return Doctrine_Core::getTable('Event');
+  }
+
+  /**
+   * Returns query retrieving Event objects with related data. Method used in
+   * symfony/doctrine admin backend module list.
+   *
+   * @return object Doctrine_Query
+   */
+  public static function getEventsBackendListQuery()
+  {
+    return Doctrine_Query::create()
+      ->from('Event e')
+      ->leftJoin('e.Category ctg')
+      ->leftJoin('e.Creator cr');
+  }
 }

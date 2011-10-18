@@ -1,0 +1,44 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           Event
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          event
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+    css:                   admin
+
+    config:
+      actions: ~
+      fields:
+        category_id:
+          label: Kategoria
+        Category:
+          label: Kategoria
+        cash_total:
+          label: Kwota
+        created_at:
+          label: Utworzono
+        created_by:
+          label: Utworzył
+        Creator:
+          label: Utworzył
+      list:
+        display: [ Category, _cash_total, Creator, created_at ]
+        title: Lista wydatków
+        max_per_page: 50
+        table_method: getEventsBackendListQuery
+      filter:
+        display: [ category_id ]
+      form:
+#        fields:
+#          name:
+#            attributes: { size: 50 }
+      edit:
+        title: Edytuj wydatek
+      new:
+        title: Dodaj wydatek

@@ -14,9 +14,9 @@ Event:
     category_id:
       type: integer
       notnull: true
-    place:
-      type: string(64)
-      notnull: true
+#    place:
+#      type: string(64)
+#      notnull: true
     cash_total:
       type: decimal(10,2)
       notnull: true
