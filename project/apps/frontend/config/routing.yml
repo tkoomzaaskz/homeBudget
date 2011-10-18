@@ -1,0 +1,36 @@
+# You can find more information about this file on the symfony website:
+# http://www.symfony-project.org/reference/1_4/en/10-Routing
+
+popup:
+  url:   /popup
+  param: { module: main, action: popup }
+
+basic_popup:
+  url:   /basic-popup
+  param: { module: main, action: basicPopup }
+
+advanced_popup:
+  url:   /advanced-popup
+  param: { module: main, action: advancedPopup }
+
+# default rules
+homepage:
+  url:   /
+  param: { module: main, action: index }
+
+sfGeshiExample:
+  url:   /geshi
+  param: { module: sfGeshiExample, action: index }
+
+sfMultiVideoExample:
+  url:   /multi-video
+  param: { module: main, action: multi }
+
+# generic rules
+# please, remove them by adding more specific rules
+default_index:
+  url:   /:module
+  param: { action: index }
+
+default:
+  url:   /:module/:action/*

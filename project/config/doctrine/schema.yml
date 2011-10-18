@@ -1,0 +1,60 @@
+options:
+  charset: utf8
+  collate: utf8_general_ci
+
+Event:
+  actAs:
+    Timestampable:
+      updated:
+        disabled: true
+    Signable:
+      updated:
+        disabled: true
+  columns:
+    category_id:
+      type: integer
+      notnull: true
+    place:
+      type: string(64)
+      notnull: true
+    cash_total:
+      type: decimal(10,2)
+      notnull: true
+  relations:
+    Category:
+      foreignAlias: Events
+
+Category:
+  actAs:
+    Timestampable: ~
+    Signable: ~
+  columns:
+    parent_id:
+      type: integer
+    name:
+      type: string(32)
+      notnull: true
+  relations:
+    Parent:
+      class: Category
+      local: parent_id
+      foreign: id
+      foreignAlias: Children
+
+Income:
+  actAs:
+    Timestampable: ~
+    Signable: ~
+  columns:
+    date_from:
+      type: datetime
+      notnull: true
+    date_to:
+      type: datetime
+      notnull: true
+    amount:
+      type: decimal(10,2)
+      notnull: true
+    name:
+      type: string(64)
+      notnull: true
