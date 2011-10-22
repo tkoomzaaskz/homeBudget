@@ -6,10 +6,10 @@ all:
         items:
           Wydatki:
             url: event
-            image: preferences.png
+            image: full-shopping-cart-icon.png
           Przychody:
             url: income
-            image: preferences.png
+            image: wallet-icon.png
           Rodzaje wydatków:
             url: category
             image: preferences.png
