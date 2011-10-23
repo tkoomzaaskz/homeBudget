@@ -8,7 +8,7 @@
 /**
  * main actions.
  *
- * @package    test
+ * @package    finances
  * @class      mainActions
  * @author     Your name here
  * @version    SVN: $Id: actions.class.php
