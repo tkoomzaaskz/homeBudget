@@ -17,6 +17,7 @@ abstract class BaseEventForm extends BaseFormDoctrine
     $this->setWidgets(array(
       'id'          => new sfWidgetFormInputHidden(),
       'category_id' => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Category'), 'add_empty' => false)),
+      'comment'     => new sfWidgetFormTextarea(),
       'cash_total'  => new sfWidgetFormInputText(),
       'created_at'  => new sfWidgetFormDateTime(),
       'created_by'  => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Creator'), 'add_empty' => true)),
@@ -25,6 +26,7 @@ abstract class BaseEventForm extends BaseFormDoctrine
     $this->setValidators(array(
       'id'          => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id')), 'empty_value' => $this->getObject()->get('id'), 'required' => false)),
       'category_id' => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Category'))),
+      'comment'     => new sfValidatorString(array('required' => false)),
       'cash_total'  => new sfValidatorNumber(),
       'created_at'  => new sfValidatorDateTime(),
       'created_by'  => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Creator'), 'required' => false)),

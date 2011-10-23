@@ -17,6 +17,8 @@ class EventForm extends BaseEventForm
       $this->setDefault ('created_at', date('Y-m-d H:i:s'));
       $this->setDefault ('created_by', sfContext::getInstance()->getUser()->getId());
     }
+    
+    $this->setWidget('comment', new sfWidgetFormInputText());
 
     $this->setWidget('category_id',
       new sfWidgetFormDoctrineChoice(array(

@@ -13,5 +13,13 @@ class CategoryForm extends BaseCategoryForm
   public function configure()
   {
     unset($this['created_at'], $this['updated_at'], $this['created_by'], $this['updated_by']);
+
+    $this->setWidget('parent_id',
+      new sfWidgetFormDoctrineChoice(array(
+        'model' => $this->getRelatedModelName('Parent'),
+        'add_empty' => '→ wybierz ←',
+        'method' => 'getIndentedName',
+        'table_method' => 'getCategoryTreeCollection',)
+    ));
   }
 }
