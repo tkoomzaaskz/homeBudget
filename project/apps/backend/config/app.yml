@@ -1,7 +1,7 @@
 all:
 
-  money:
-    emphasize_above: 100
+  event:
+    expensive: 100
 
   sf_admin_dash:
     categories:

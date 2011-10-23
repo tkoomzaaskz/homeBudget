@@ -21,4 +21,15 @@ class Event extends BaseEvent
   {
     return true;
   }
+
+  /**
+   * Returns true if the event is expensive (cash amount the same or higher than
+   * a constant given in application configuration).
+   *
+   * @return Boolean
+   */
+  public function isExpensive()
+  {
+    return ($this->getCashTotal() >= sfConfig::get('app_event_expensive'));
+  }
 }
