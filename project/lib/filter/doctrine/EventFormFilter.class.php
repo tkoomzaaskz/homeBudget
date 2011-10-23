@@ -12,5 +12,12 @@ class EventFormFilter extends BaseEventFormFilter
 {
   public function configure()
   {
+    $this->setWidget('category_id',
+      new sfWidgetFormDoctrineChoice(array(
+        'model' => $this->getRelatedModelName('Category'),
+        'add_empty' => '→ wybierz ←',
+        'method' => 'getIndentedName',
+        'table_method' => 'getCategoryTreeCollection',)
+    ));
   }
 }

@@ -12,5 +12,12 @@ class CategoryFormFilter extends BaseCategoryFormFilter
 {
   public function configure()
   {
+    $this->setWidget('parent_id',
+      new sfWidgetFormDoctrineChoice(array(
+        'model' => $this->getRelatedModelName('Parent'),
+        'add_empty' => '→ wybierz ←',
+        'method' => 'getIndentedName',
+        'table_method' => 'getCategoryTreeCollection',)
+    ));
   }
 }

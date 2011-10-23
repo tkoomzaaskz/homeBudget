@@ -7,13 +7,53 @@
  */
 class CategoryTable extends Doctrine_Table
 {
-    /**
-     * Returns an instance of this class.
-     *
-     * @return object CategoryTable
-     */
-    public static function getInstance()
+  /**
+   * Returns an instance of this class.
+   *
+   * @return object CategoryTable
+   */
+  public static function getInstance()
+  {
+    return Doctrine_Core::getTable('Category');
+  }
+
+  /**
+   * Returns query retrieving Category objects with related data. Method used in
+   * symfony/doctrine admin backend module list.
+   *
+   * @return object Doctrine_Query
+   */
+  public static function getCategoriesBackendListQuery()
+  {
+    return Doctrine_Query::create()
+      ->from('Category c')
+      ->leftJoin('c.Parent cp')
+      ->leftJoin('c.Creator cr')
+      ->orderBy('c.name ASC');
+  }
+
+ /**
+  * Returns CategoryTreeCollection.
+  *
+  * @return Collection/Category
+  */
+  public function getCategoryTreeCollection()
+  {
+    $categories = Doctrine_Query::create()
+      ->from('Category c')
+      ->leftJoin('c.Children cc')
+      ->where('c.parent_id IS NULL')
+      ->orderBy('c.name ASC')
+      ->addOrderBy('cc.name ASC')
+      ->execute();
+
+    $collection = new Doctrine_Collection('Category');
+    foreach ($categories as $category)
     {
-        return Doctrine_Core::getTable('Category');
+      $collection->add($category);
+      foreach ($category->getChildren() as $child)
+        $collection->add($child);
     }
+    return $collection;
+  }
 }

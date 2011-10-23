@@ -18,6 +18,14 @@ class EventForm extends BaseEventForm
       $this->setDefault ('created_by', sfContext::getInstance()->getUser()->getId());
     }
 
+    $this->setWidget('category_id',
+      new sfWidgetFormDoctrineChoice(array(
+        'model' => $this->getRelatedModelName('Category'),
+        'add_empty' => '→ wybierz ←',
+        'method' => 'getIndentedName',
+        'table_method' => 'getCategoryTreeCollection',)
+    ));
+
     $this->widgetSchema['created_at'] = new sfWidgetFormI18nDate(array('culture' => 'pl'));
   }
 }

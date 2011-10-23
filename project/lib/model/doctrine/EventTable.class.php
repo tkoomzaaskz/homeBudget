@@ -28,6 +28,7 @@ class EventTable extends Doctrine_Table
     return Doctrine_Query::create()
       ->from('Event e')
       ->leftJoin('e.Category ctg')
-      ->leftJoin('e.Creator cr');
+      ->leftJoin('e.Creator cr')
+      ->orderBy('e.created_at DESC');
   }
 }

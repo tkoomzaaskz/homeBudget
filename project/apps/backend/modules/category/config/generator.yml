@@ -14,9 +14,35 @@ generator:
 
     config:
       actions: ~
-      fields:  ~
-      list:    ~
-      filter:  ~
-      form:    ~
-      edit:    ~
-      new:     ~
+      fields:
+        parent_id:
+          label: Nadrzędna
+        parent:
+          label: Nadrzędna
+        name:
+          label: Nazwa
+        created_at:
+          label: Utworzono
+        updated_at:
+          label: Zmodyfikowano
+        created_by:
+          label: Utworzył
+        updated_by:
+          label: Zmodyfikował
+        creator:
+          label: Utworzył
+      list:
+        display: [ name, parent, creator ]
+        title: Lista wydatków
+        max_per_page: 50
+        table_method: getCategoriesBackendListQuery
+      filter:
+        display: [ parent_id ]
+      form:
+#        fields:
+#          name:
+#            attributes: { size: 50 }
+      edit:
+        title: Edytuj rodzaj wydatków
+      new:
+        title: Dodaj rodzaj wydatków

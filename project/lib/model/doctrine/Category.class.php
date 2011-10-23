@@ -12,4 +12,13 @@
  */
 class Category extends BaseCategory
 {
+  /**
+   * Returns indented name.
+   *
+   * @return String - indented name
+   */
+  public function getIndentedName()
+  {
+    return ($this['parent_id'] ? '&nbsp;&nbsp;&nbsp;' : '').$this->getName();
+  }
 }
