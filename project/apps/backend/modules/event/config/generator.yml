@@ -24,9 +24,9 @@ generator:
         created_at:
           label: Utworzono
         created_by:
-          label: Utworzył
+          label: Utworzył(a)
         Creator:
-          label: Utworzył
+          label: Utworzył(a)
       list:
         display: [ Category, _cash_total, Creator, _created_at ]
         title: Lista wydatków

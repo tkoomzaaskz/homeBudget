@@ -26,11 +26,11 @@ generator:
         updated_at:
           label: Zmodyfikowano
         created_by:
-          label: Utworzył
+          label: Utworzył(a)
         updated_by:
-          label: Zmodyfikował
+          label: Zmodyfikował(a)
         creator:
-          label: Utworzył
+          label: Utworzył(a)
       list:
         display: [ name, parent, creator ]
         title: Lista wydatków

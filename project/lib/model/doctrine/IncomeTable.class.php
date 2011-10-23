@@ -7,13 +7,27 @@
  */
 class IncomeTable extends Doctrine_Table
 {
-    /**
-     * Returns an instance of this class.
-     *
-     * @return object IncomeTable
-     */
-    public static function getInstance()
-    {
-        return Doctrine_Core::getTable('Income');
-    }
+  /**
+   * Returns an instance of this class.
+   *
+   * @return object IncomeTable
+   */
+  public static function getInstance()
+  {
+    return Doctrine_Core::getTable('Income');
+  }
+
+  /**
+   * Returns query retrieving Income objects with related data. Method used in
+   * symfony/doctrine admin backend module list.
+   *
+   * @return object Doctrine_Query
+   */
+  public static function getIncomesBackendListQuery()
+  {
+    return Doctrine_Query::create()
+      ->from('Income i')
+      ->leftJoin('i.Creator cr')
+      ->orderBy('i.created_at DESC');
+  }
 }

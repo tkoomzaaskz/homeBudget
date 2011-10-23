@@ -22,4 +22,18 @@ class Tools
   {
     return number_format($value, 2, '.', '') . ($unit ? ' zł' : '');
   }
+
+  /**
+   * Returns number of days of a given month for the current year.
+   *
+   * @param Integer $month - range 1..12
+   * @return Integer - either 28, 29, 30 or 31.
+   */
+  static public function getDaysOfMonth($month)
+  {
+    $month = str_pad($month, 2, "0", STR_PAD_LEFT);
+    $date_string = strtotime("-1 second", strtotime("+1 month", strtotime($month."/01/".date("Y")."00:00:00")));
+    $last_day_of_month = date("Y-m-d", $date_string);
+    return substr($last_day_of_month, -2);
+  }
 }
