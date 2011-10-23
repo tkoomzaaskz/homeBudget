@@ -12,4 +12,13 @@
  */
 class Event extends BaseEvent
 {
+  /**
+   * Returns true if the event was made today.
+   *
+   * @return Boolean
+   */
+  public function isToday()
+  {
+    return true;
+  }
 }
