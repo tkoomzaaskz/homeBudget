@@ -32,6 +32,19 @@ class CategoryTable extends Doctrine_Table
       ->orderBy('c.name ASC');
   }
 
+  /**
+   * Returns query retrieving top level Category objects.
+   *
+   * @return object Doctrine_Query
+   */
+  public static function getTopLevelCategoriesQuery()
+  {
+    return Doctrine_Query::create()
+      ->from('Category c')
+      ->where('c.parent_id IS NULL')
+      ->orderBy('c.name ASC');
+  }
+
  /**
   * Returns CategoryTreeCollection.
   *

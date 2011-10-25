@@ -19,7 +19,7 @@ class CategoryForm extends BaseCategoryForm
         'model' => $this->getRelatedModelName('Parent'),
         'add_empty' => '→ wybierz ←',
         'method' => 'getIndentedName',
-        'table_method' => 'getCategoryTreeCollection',)
+        'table_method' => 'getTopLevelCategoriesQuery',)
     ));
   }
 }
