@@ -26,7 +26,10 @@
       </tfoot>
       <tbody>
         <?php foreach ($pager->getResults() as $i => $event): $odd = fmod(++$i, 2) ? 'odd' : 'even' ?>
-          <tr class="sf_admin_row <?php echo $odd; if ($event->isExpensive()) echo ' emphasized' ?>">
+        <?php $css = '';
+          if ($event->isExpensive()) $css .= ' emphasized';
+          if ($event->isToday()) $css .= ' today'; ?>
+          <tr class="sf_admin_row <?php echo $odd.$css; ?>">
             <?php include_partial('event/list_td_batch_actions', array('event' => $event, 'helper' => $helper)) ?>
             <?php include_partial('event/list_td_tabular', array('event' => $event)) ?>
             <?php include_partial('event/list_td_actions', array('event' => $event, 'helper' => $helper)) ?>

@@ -2,3 +2,13 @@ tr.emphasized td
 {
   font-weight: bold;
 }
+
+tr.today.odd td
+{
+  background-color: #FFE9E9 !important;
+}
+
+tr.today.even td
+{
+  background-color: #EED9D9 !important;
+}

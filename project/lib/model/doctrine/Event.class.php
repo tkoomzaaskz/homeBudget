@@ -19,7 +19,7 @@ class Event extends BaseEvent
    */
   public function isToday()
   {
-    return true;
+    return (date("Y-m-d") == substr($this->getCreatedAt(), 0, 10));
   }
 
   /**
