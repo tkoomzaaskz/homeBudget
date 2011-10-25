@@ -13,6 +13,11 @@
       <tfoot>
         <tr>
           <th colspan="6">
+            w sumie: <?php echo Tools::priceFormat($total_count, true) ?>
+          </th>
+        </tr>
+        <tr>
+          <th colspan="6">
             <?php if ($pager->haveToPaginate()): ?>
               <?php include_partial('event/pagination', array('pager' => $pager)) ?>
             <?php endif; ?>
