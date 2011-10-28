@@ -36,4 +36,14 @@ class Tools
     $last_day_of_month = date("Y-m-d", $date_string);
     return substr($last_day_of_month, -2);
   }
+
+  static public function getBeginningOfTheMonthDate()
+  {
+    return date("Y-m-01");
+  }
+
+  static public function getEndingOfTheMonthDate()
+  {
+    return date("Y-m-".self::getDaysOfMonth(date("m")));
+  }
 }

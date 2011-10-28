@@ -69,4 +69,21 @@ class CategoryTable extends Doctrine_Table
     }
     return $collection;
   }
+
+  /**
+   * Returns query retrieving all categories with events. Used in Category Pie
+   * chart.
+   *
+   * @param Array $date - from/to
+   * @return object Doctrine_Query
+   */
+  public static function getAllCategoriesWithEventsQuery($date)
+  {
+    $clause = ($date ? " ON c.id = e.category_id
+      AND e.created_at BETWEEN '{$date['from']}' AND '{$date['to']}'" : '');
+    return Doctrine_Query::create()
+      ->from('Category c')
+      ->leftJoin('c.Events e'.$clause)
+      ->orderBy('c.name ASC');
+  }
 }

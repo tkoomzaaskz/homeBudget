@@ -21,4 +21,19 @@ class Category extends BaseCategory
   {
     return ($this['parent_id'] ? '&nbsp;&nbsp;&nbsp;' : '').$this->getName();
   }
+
+  /**
+   * Returns total cash spent on a particular Category.
+   *
+   * @return Decimal
+   */
+  public function getCashTotalSum()
+  {
+    $sum = 0;
+    foreach ($this->getEvents() as $event)
+    {
+      $sum += $event->getCashTotal();
+    }
+    return $sum;
+  }
 }

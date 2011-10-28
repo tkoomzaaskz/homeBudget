@@ -16,3 +16,8 @@ all:
           Rodzaje wydatków:
             url: category
             image: preferences.png
+      Wykresy:
+        items:
+          Wg kategorii:
+            url: chart_category_pie
+            image: misc-stats-icon.png
