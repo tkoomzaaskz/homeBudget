@@ -43,18 +43,16 @@ Category:
 
 Income:
   actAs:
-    Timestampable: ~
-    Signable: ~
+    Timestampable:
+      updated:
+        disabled: true
+    Signable:
+      updated:
+        disabled: true
   columns:
-    date_from:
-      type: datetime
-      notnull: true
-    date_to:
-      type: datetime
-      notnull: true
     amount:
       type: decimal(10,2)
       notnull: true
-    name:
+    description:
       type: string(64)
       notnull: true

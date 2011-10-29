@@ -12,4 +12,23 @@
  */
 class Income extends BaseIncome
 {
+  /**
+   * Income registered this year.
+   *
+   * @return Boolean
+   */
+  public function isThisYear()
+  {
+    return (substr($this->getCreatedAt(), 0, 4) == date('Y'));
+  }
+
+  /**
+   * Income registered this month (and this year - at the same time).
+   *
+   * @return Boolean
+   */
+  public function isThisMonth()
+  {
+    return ((substr($this->getCreatedAt(), 5, 2) == date('m')) && $this->isThisYear());
+  }
 }

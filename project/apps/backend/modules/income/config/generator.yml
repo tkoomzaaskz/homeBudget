@@ -15,34 +15,28 @@ generator:
     config:
       actions: ~
       fields:
-        date_from:
-          label: Od
-        date_to:
-          label: Do
-        period:
-          label: Okres
         amount:
           label: Kwota
-        name:
+        description:
           label: Opis
         created_at:
           label: Utworzono
         created_by:
-          label: Utworzył
+          label: Utworzył(a)
         creator:
           label: Utworzył(a)
       list:
-        display: [ _amount, _period, creator ]
+        display: [ _amount, creator, _created_at ]
         title: Lista przychodów
         max_per_page: 50
         table_method: getIncomesBackendListQuery
       filter:
-        display: [ created_by ]
+        display: [ created_by, created_at ]
       form:
         fields:
           amount:
             attributes: { size: 10 }
-          name:
+          description:
             attributes: { size: 50 }
       edit:
         title: Edytuj przychód

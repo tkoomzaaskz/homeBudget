@@ -13,4 +13,15 @@ require_once dirname(__FILE__).'/../lib/incomeGeneratorHelper.class.php';
  */
 class incomeActions extends autoIncomeActions
 {
+  public function executeIndex(sfWebRequest $request)
+  {
+    parent::executeIndex($request);
+    $query = $this->buildQuery()->copy();
+    $root_alias = $query->getRootAlias();
+    $total_data = $query
+      ->limit(0)
+      ->select("SUM({$root_alias}.amount) AS sum")
+      ->fetchArray();
+    $this->total_count = $total_data[0]['sum'];
+  }
 }

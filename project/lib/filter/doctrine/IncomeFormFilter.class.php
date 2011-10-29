@@ -12,5 +12,10 @@ class IncomeFormFilter extends BaseIncomeFormFilter
 {
   public function configure()
   {
+    $this->setWidget('created_at', new sfWidgetFormFilterDate(array(
+      'from_date' => new sfWidgetFormI18nDate(array('culture' => 'pl')),
+      'to_date' => new sfWidgetFormI18nDate(array('culture' => 'pl')),
+      'with_empty' => false,
+    )));
   }
 }
