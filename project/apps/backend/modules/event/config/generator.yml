@@ -32,7 +32,7 @@ generator:
       list:
         display: [ Category, _cash_total, Creator, _created_at ]
         title: Lista wydatków
-        max_per_page: 50
+        max_per_page: 20
         table_method: getEventsBackendListQuery
       filter:
         display: [ category_id, created_by, created_at ]
