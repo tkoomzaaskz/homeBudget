@@ -13,14 +13,14 @@ class ChartDataManager
   /**
    * Returns data for Category Pie chart. Sums up all outcomes of all categories.
    *
-   * @param Array $date - (optional) from/to
+   * @param Array $chart - (optional) from/to
    * @return Array
    */
-  static public function getCategoryPieData($date)
+  static public function getCategoryPieData($chart)
   {
     // fetch data
     $categories = Doctrine::getTable('Category')
-      ->getAllCategoriesWithEventsQuery($date)
+      ->getAllCategoriesWithEventsQuery($chart)
       ->execute();
 
     // construct result array
