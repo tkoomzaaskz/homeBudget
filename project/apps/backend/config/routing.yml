@@ -1,3 +1,21 @@
+income_category:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                IncomeCategory
+    module:               income_category
+    prefix_path:          /income_category
+    column:               id
+    with_wildcard_routes: true
+
+outcome_category:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                OutcomeCategory
+    module:               outcome_category
+    prefix_path:          /outcome_category
+    column:               id
+    with_wildcard_routes: true
+
 category:
   class: sfDoctrineRouteCollection
   options:
@@ -16,12 +34,12 @@ income:
     column:               id
     with_wildcard_routes: true
 
-event:
+outcome:
   class: sfDoctrineRouteCollection
   options:
-    model:                Event
-    module:               event
-    prefix_path:          /event
+    model:                Outcome
+    module:               outcome
+    prefix_path:          /outcome
     column:               id
     with_wildcard_routes: true
 

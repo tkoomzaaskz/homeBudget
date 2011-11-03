@@ -7,20 +7,14 @@
  * 
  * @property integer $parent_id
  * @property string $name
- * @property Category $Parent
- * @property Doctrine_Collection $Events
- * @property Doctrine_Collection $Children
+ * @property string $type
  * 
- * @method integer             getParentId()  Returns the current record's "parent_id" value
- * @method string              getName()      Returns the current record's "name" value
- * @method Category            getParent()    Returns the current record's "Parent" value
- * @method Doctrine_Collection getEvents()    Returns the current record's "Events" collection
- * @method Doctrine_Collection getChildren()  Returns the current record's "Children" collection
- * @method Category            setParentId()  Sets the current record's "parent_id" value
- * @method Category            setName()      Sets the current record's "name" value
- * @method Category            setParent()    Sets the current record's "Parent" value
- * @method Category            setEvents()    Sets the current record's "Events" collection
- * @method Category            setChildren()  Sets the current record's "Children" collection
+ * @method integer  getParentId()  Returns the current record's "parent_id" value
+ * @method string   getName()      Returns the current record's "name" value
+ * @method string   getType()      Returns the current record's "type" value
+ * @method Category setParentId()  Sets the current record's "parent_id" value
+ * @method Category setName()      Sets the current record's "name" value
+ * @method Category setType()      Sets the current record's "type" value
  * 
  * @package    finances
  * @subpackage model
@@ -40,26 +34,29 @@ abstract class BaseCategory extends sfDoctrineRecord
              'notnull' => true,
              'length' => 32,
              ));
+        $this->hasColumn('type', 'string', 255, array(
+             'type' => 'string',
+             'length' => 255,
+             ));
 
         $this->option('charset', 'utf8');
         $this->option('collate', 'utf8_general_ci');
+
+        $this->setSubClasses(array(
+             'IncomeCategory' => 
+             array(
+              'type' => 'IncomeCategory',
+             ),
+             'OutcomeCategory' => 
+             array(
+              'type' => 'OutcomeCategory',
+             ),
+             ));
     }
 
     public function setUp()
     {
         parent::setUp();
-        $this->hasOne('Category as Parent', array(
-             'local' => 'parent_id',
-             'foreign' => 'id'));
-
-        $this->hasMany('Event as Events', array(
-             'local' => 'id',
-             'foreign' => 'category_id'));
-
-        $this->hasMany('Category as Children', array(
-             'local' => 'id',
-             'foreign' => 'parent_id'));
-
         $timestampable0 = new Doctrine_Template_Timestampable();
         $signable0 = new Doctrine_Template_Signable();
         $this->actAs($timestampable0);

@@ -1,6 +1,6 @@
 all:
 
-  event:
+  outcome:
     expensive: 100
 
   sf_admin_dash:
@@ -8,13 +8,16 @@ all:
       Finanse:
         items:
           Wydatki:
-            url: event
+            url: outcome
             image: full-shopping-cart-icon.png
+          Rodzaje wydatków:
+            url: outcome_category
+            image: preferences.png
           Przychody:
             url: income
             image: wallet-icon.png
-          Rodzaje wydatków:
-            url: category
+          Rodzaje przychodów:
+            url: income_category
             image: preferences.png
       Wykresy:
         items:

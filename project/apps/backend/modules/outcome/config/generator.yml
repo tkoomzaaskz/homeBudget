@@ -1,13 +1,13 @@
 generator:
   class: sfDoctrineGenerator
   param:
-    model_class:           Income
+    model_class:           Outcome
     theme:                 admin
     non_verbose_templates: true
     with_show:             false
     singular:              ~
     plural:                ~
-    route_prefix:          income
+    route_prefix:          outcome
     with_doctrine_route:   true
     actions_base_class:    sfActions
     css:                   admin
@@ -19,30 +19,31 @@ generator:
           label: Kategoria
         Category:
           label: Kategoria
-        amount:
+        comment:
+          label: Komentarz
+        cash_total:
           label: Kwota
-        description:
-          label: Opis
         created_at:
           label: Utworzono
         created_by:
           label: Utworzył(a)
-        creator:
+        Creator:
           label: Utworzył(a)
       list:
-        display: [ Category, _amount, creator, _created_at ]
-        title: Lista przychodów
-        max_per_page: 50
-        table_method: getIncomesBackendListQuery
+        display: [ Category, _cash_total, Creator, _created_at ]
+        title: Lista wydatków
+        max_per_page: 20
+        table_method: getOutcomesBackendListQuery
       filter:
         display: [ category_id, created_by, created_at ]
       form:
+        display: [ cash_total, category_id, created_by, created_at, comment ]
         fields:
-          amount:
+          cash_total:
             attributes: { size: 10 }
-          description:
+          comment:
             attributes: { size: 50 }
       edit:
-        title: Edytuj przychód
+        title: Edytuj wydatek
       new:
-        title: Dodaj przychód
+        title: Dodaj wydatek

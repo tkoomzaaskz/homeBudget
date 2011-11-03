@@ -19,8 +19,8 @@ class ChartDataManager
   static public function getCategoryPieData($chart)
   {
     // fetch data
-    $categories = Doctrine::getTable('Category')
-      ->getAllCategoriesWithEventsQuery($chart)
+    $categories = Doctrine::getTable('OutcomeCategory')
+      ->getAllCategoriesWithOutcomesQuery($chart)
       ->execute();
 
     // construct result array

@@ -1,0 +1,44 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           OutcomeCategory
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          outcome_category
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+    css:                   admin
+
+    config:
+      actions: ~
+      fields:
+        parent_id:
+          label: Nadrzędna
+        parent:
+          label: Nadrzędna
+        name:
+          label: Nazwa
+        created_at:
+          label: Utworzono
+        updated_at:
+          label: Zmodyfikowano
+        created_by:
+          label: Utworzył(a)
+        updated_by:
+          label: Zmodyfikował(a)
+        creator:
+          label: Utworzył(a)
+      list:
+        display: [ name, parent, creator ]
+        title: Lista rodzajów wydatków
+        max_per_page: 50
+        table_method: getCategoriesBackendListQuery
+      filter:
+        display: [ parent_id ]
+      edit:
+        title: Edytuj rodzaj wydatków
+      new:
+        title: Dodaj rodzaj wydatków

@@ -23,10 +23,9 @@ class CategoryTable extends Doctrine_Table
    *
    * @return object Doctrine_Query
    */
-  public static function getCategoriesBackendListQuery()
+  public function getCategoriesBackendListQuery()
   {
-    return Doctrine_Query::create()
-      ->from('Category c')
+    return self::createQuery('c')
       ->leftJoin('c.Parent cp')
       ->leftJoin('c.Creator cr')
       ->orderBy('c.name ASC');
@@ -37,10 +36,9 @@ class CategoryTable extends Doctrine_Table
    *
    * @return object Doctrine_Query
    */
-  public static function getTopLevelCategoriesQuery()
+  public function getTopLevelCategoriesQuery()
   {
-    return Doctrine_Query::create()
-      ->from('Category c')
+    return self::createQuery('c')
       ->where('c.parent_id IS NULL')
       ->orderBy('c.name ASC');
   }
@@ -52,8 +50,7 @@ class CategoryTable extends Doctrine_Table
   */
   public function getCategoryTreeCollection()
   {
-    $categories = Doctrine_Query::create()
-      ->from('Category c')
+    $categories = self::createQuery('c')
       ->leftJoin('c.Children cc')
       ->where('c.parent_id IS NULL')
       ->orderBy('c.name ASC')
@@ -68,23 +65,5 @@ class CategoryTable extends Doctrine_Table
         $collection->add($child);
     }
     return $collection;
-  }
-
-  /**
-   * Returns query retrieving all categories with events. Used in Category Pie
-   * chart.
-   *
-   * @param Array $chart - from/to
-   * @return object Doctrine_Query
-   */
-  public static function getAllCategoriesWithEventsQuery($chart)
-  {
-    $signable_clause = $chart['created_by'] ? "AND e.created_by = {$chart['created_by']}" : '';
-    $clause = ($chart ? " ON c.id = e.category_id
-      {$signable_clause} AND (e.created_at BETWEEN '{$chart['date_from']}' AND '{$chart['date_to']}')" : '');
-    return Doctrine_Query::create()
-      ->from('Category c')
-      ->leftJoin('c.Events e'.$clause)
-      ->orderBy('c.name ASC');
   }
 }

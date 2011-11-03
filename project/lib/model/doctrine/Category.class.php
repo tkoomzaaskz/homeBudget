@@ -30,9 +30,9 @@ class Category extends BaseCategory
   public function getCashTotalSum()
   {
     $sum = 0;
-    foreach ($this->getEvents() as $event)
+    foreach ($this->getOutcomes() as $outcome)
     {
-      $sum += $event->getCashTotal();
+      $sum += $outcome->getCashTotal();
     }
     return $sum;
   }

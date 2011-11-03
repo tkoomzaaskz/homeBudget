@@ -1,14 +1,14 @@
 <?php
 
 /**
- * Income filter form.
+ * Outcome filter form.
  *
  * @package    finances
  * @subpackage filter
- * @author     Your name here
+ * @author     Tomasz Ducin <tomasz.ducin@gmail.com>
  * @version    SVN: $Id: sfDoctrineFormFilterTemplate.php 23810 2009-11-12 11:07:44Z Kris.Wallsmith $
  */
-class IncomeFormFilter extends BaseIncomeFormFilter
+class OutcomeFormFilter extends BaseOutcomeFormFilter
 {
   public function configure()
   {
