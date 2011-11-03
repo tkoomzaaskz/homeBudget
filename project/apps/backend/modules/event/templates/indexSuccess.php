@@ -7,7 +7,7 @@
   <?php include_partial('event/flashes') ?>
 
   <div id="sf_admin_header">
-    <?php include_partial('event/list_header', array('pager' => $pager)) ?>
+    <?php include_partial('event/list_header', array('pager' => $pager, 'helper' => $helper)) ?>
   </div>
 
   <div id="sf_admin_bar">
