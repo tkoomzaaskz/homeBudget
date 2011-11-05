@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff version="1.0">
+  <file source-language="en" target-language="pl"
+  datatype="plaintext" original="messages" product-name="messages">
+    <header />
+    <body>
+      <trans-unit>
+        <source>chart</source>
+        <target>Wykresy</target>
+      </trans-unit>
+      <trans-unit>
+        <source>CategoryPie</source>
+        <target>Wykres kołowy wydatków wg kategorii</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

@@ -38,9 +38,9 @@ else:
     <div id='sf_admin_path'>
       <strong><a href='<?php echo url_for('homepage'); ?>'><?php echo __(sfAdminDash::getProperty('site'), array(), 'sf_admin_dash'); ?></a></strong>
       <?php if ($sf_context->getModuleName() != 'sfAdminDash' && $sf_context->getActionName() != 'dashboard'): ?>
-        / <?php echo null !== $module_link ? link_to($module_link_name, $module_link) : $module_link_name; ?>
+        / <?php echo null !== $module_link ? link_to(__($module_link_name, null, 'sf_admin_actions'), $module_link) : __($module_link_name, null, 'sf_admin_actions'); ?>
         <?php if (null != $action_link): ?>
-          / <?php echo link_to(__(ucfirst($action_link_name), null, 'sf_admin'), $action_link); ?>
+          / <?php echo link_to(__(ucfirst($action_link_name), null, 'sf_admin_actions'), $action_link); ?>
         <?php endif ?>
       <?php endif; ?>
     </div>
