@@ -32,7 +32,7 @@
     </div>
     <div class="login-text">
       <div class="ctr"><img alt="Security" src="<?php echo image_path(sfAdminDash::getProperty('web_dir', '/sfAdminDashPlugin').'/images/love.gif'); ?>" /></div>
-      <p><?php echo __('Welcome to', array(), 'sf_admin_dash'); ?> <?php echo sfAdminDash::getProperty('site'); ?></p>
+      <p style="font-size: 110%;"><?php echo __('Welcome to', array(), 'sf_admin_dash'); ?><br /><?php echo __(sfAdminDash::getProperty('site'), array(), 'sf_admin_dash'); ?></p>
       <p><?php echo __('Use a valid username and password to gain access to the administration console.', array(), 'sf_admin_dash'); ?></p>
       <div class="ctr"><img alt="Security" src="<?php echo image_path(sfAdminDash::getProperty('web_dir', '/sfAdminDashPlugin').'/images/piggy.png'); ?>" /></div>
     </div>

@@ -43,6 +43,7 @@ all:
 
     # Enable the database manager
     use_database:           true
+    i18n:                   on
     enabled_modules:        [ default, sfGuardAuth, sfAdminDash ]
     default_culture:        pl
     standard_helpers:       [ Partial, Cache, I18N ]
