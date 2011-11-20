@@ -1,3 +1,3 @@
-CREATE database `u785700299_finances`;
-CREATE USER 'u785700299_user'@'localhost' IDENTIFIED BY 'cNt2705aF1v0';
-GRANT ALL ON `u785700299_finances`.* TO 'u785700299_user'@'localhost';
+CREATE database `ad9bis_finances`;
+CREATE USER 'ad9bis_financer'@'localhost' IDENTIFIED BY '3CWSrOVLweG0';
+GRANT ALL ON `ad9bis_finances`.* TO 'ad9bis_financer'@'localhost';
