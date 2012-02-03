@@ -1,5 +1,9 @@
 all:
 
+  chart_size:
+    width: 600
+    height: 400
+
   outcome:
     expensive: 100
 

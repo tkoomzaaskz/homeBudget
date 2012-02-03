@@ -20,15 +20,22 @@ class ChartDataManager
    * to:
    * array
    *   '2011-09' => 'sum' => string '3067.45' (length=7)
+   * where all periods are defined (zero value if no value passed in source
+   * array).
    *
+   * @param Array $periods
    * @param Array $source
    * @return Array
    */
-  static private function getTimeAsKeyTranslatedArray($source)
+  static private function getPeriodedArray($periods, $source)
   {
     $result = array();
+    foreach ($periods as $period)
+      $result[$period] = 0;
+
     foreach ($source as $value)
       $result[$value['date']] = $value['sum'];
+
     return $result;
   }
 
@@ -44,6 +51,27 @@ class ChartDataManager
   static private function getArrayKeys($plus_array, $minus_array)
   {
     return array_unique(array_merge(array_keys($plus_array), array_keys($minus_array)));
+  }
+
+  static private function generatePeriodsArrayByMonths($chart)
+  {
+    $result = array();
+    $from_tmp = explode('-', $chart['date_from']);
+    $from_year = $from_tmp[0];
+    $from_month = $from_tmp[1];
+    $to_tmp = explode('-', $chart['date_to']);
+    $to_year = $to_tmp[0];
+    $to_month = $to_tmp[1];
+    for ($ind_year = (int) $from_year; $ind_year <= $to_year; $ind_year++)
+    { // for all year mentioned
+      $start_month = ($ind_year == $from_year ? $from_month : 1);
+      $end_month = ($ind_year == $to_year ? $to_month : 12);
+      for ($ind_month = (int) $start_month; $ind_month <= $end_month; $ind_month++)
+      {
+        $result[] = $ind_year.'-'.sprintf("%02d", $ind_month);
+      }
+    }
+    return $result;
   }
 
   static private function clearArrayKeys($source)
@@ -118,15 +146,15 @@ class ChartDataManager
    */
   static public function getMonthlyBalanceBarsData($chart)
   {
-    // to do - empty periods (with no data - MySQL returns no rows)
+    $periods = self::generatePeriodsArrayByMonths($chart);
 
-    $outcomes = self::getTimeAsKeyTranslatedArray(
-      Doctrine::getTable('Outcome')
-      ->getOutcomeMonthlySumByDateRange($chart['date_from'].'-01', $chart['date_to'].'-31', $chart['created_by']));
+    $outcomes_raw = Doctrine::getTable('Outcome')
+      ->getOutcomeMonthlySumByDateRange($chart['date_from'].'-01', $chart['date_to'].'-31', $chart['created_by']);
+    $outcomes = self::getPeriodedArray($periods, $outcomes_raw);
 
-    $incomes = self::getTimeAsKeyTranslatedArray(
-      Doctrine::getTable('Income')
-      ->getIncomeMonthlySumByDateRange($chart['date_from'].'-01', $chart['date_to'].'-31', $chart['created_by']));
+    $incomes_raw = Doctrine::getTable('Income')
+      ->getIncomeMonthlySumByDateRange($chart['date_from'].'-01', $chart['date_to'].'-31', $chart['created_by']);
+    $incomes = self::getPeriodedArray($periods, $incomes_raw);
 
     $balances = self::getBalancedValueArray($incomes, $outcomes);
 

@@ -22,12 +22,12 @@ class chartActions extends sfActions
   */
   public function executeMonthlyBalanceBars(sfWebRequest $request)
   {
-    ChartDataManager::getMonthlyBalanceBarsData($request->getParameter('chart'));
     switch ($request->getParameter('mode'))
     {
       case 'execute':
         $this->form = new MonthlyBalanceBarsChartForm();
         $this->getResponse()->addJavascript('chart/monthly_balance_bars.js');
+        $this->getResponse()->addJavascript('chart/base.js');
         break;
       case 'calculate':
         $this->calculateMonthlyBalanceBars($request);
@@ -69,10 +69,12 @@ class chartActions extends sfActions
     $g->set_y_legend( 'Sumy pieniedzy', 12, '#736AFF' );
     $g->set_tool_tip( '#x_label#: #val# zł' );
 
-    $g->set_x_axis_3d( 12 );
+    $x_label_orientation = (count($data['incomes']) > 6 ? 2 : 0);
+    $g->set_x_axis_3d(12);
+    $g->set_x_label_style(15, '#000', $x_label_orientation);
     $g->set_x_labels($data['keys']);
-    $g->x_axis_colour( '#909090', '#ADB5C7' );
-    $g->y_axis_colour( '#909090', '#ADB5C7' );
+    $g->x_axis_colour('#909090', '#ADB5C7');
+    $g->y_axis_colour('#909090', '#ADB5C7');
 
     $g->title( 'Bilans miesięczny', '{font-size:20px; color: #FFFFFF; margin: 5px; background-color: #505050; padding:5px; padding-left: 20px; padding-right: 20px;}' );
 
@@ -94,6 +96,7 @@ class chartActions extends sfActions
       case 'execute':
         $this->form = new CategoryPieChartForm();
         $this->getResponse()->addJavascript('chart/category_pie.js');
+        $this->getResponse()->addJavascript('chart/base.js');
         break;
       case 'calculate':
         $this->calculateCategoryPie($request);
