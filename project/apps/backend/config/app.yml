@@ -24,3 +24,6 @@ all:
           Wg kategorii:
             url: chart_category_pie
             image: misc-stats-icon.png
+          Bilans miesięczny:
+            url: chart_monthly_balance_bars
+            image: misc-stats-icon.png

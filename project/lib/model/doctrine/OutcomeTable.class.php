@@ -18,6 +18,28 @@ class OutcomeTable extends Doctrine_Table
   }
 
   /**
+   * Returns array of monthly sums of all outcomes for a given date range,
+   * optionally filtered by user.
+   *
+   * @param String $date_from
+   * @param String $date_to
+   * @param Integer $created_by
+   * @return Array
+   */
+  public static function getOutcomeMonthlySumByDateRange($date_from, $date_to, $created_by = null)
+  {
+    $query = Doctrine_Query::create()
+      ->select('SUM(o.cash_total) AS sum, DATE_FORMAT( o.created_at, "%Y-%m" ) AS date')
+      ->from('Outcome o')
+      ->where("o.created_at BETWEEN '{$date_from}' AND '{$date_to}'")
+      ->groupBy('YEAR(o.created_at)')
+      ->addGroupBy('MONTH(o.created_at)')
+      ->orderBy('o.created_at ASC');
+    if ($created_by) $query->andWhere('o.created_by = ?', $created_by);
+    return $query->fetchArray();
+  }
+
+  /**
    * Returns query retrieving Outcome objects with related data. Method used in
    * symfony/doctrine admin backend module list.
    *

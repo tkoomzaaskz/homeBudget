@@ -37,12 +37,34 @@ class Tools
     return substr($last_day_of_month, -2);
   }
 
-  static public function getBeginningOfTheMonthDate()
+  /**
+   * Returns formatted date: current year, current month.
+   *
+   * @return String
+   */
+  static public function getCurrentMonthDate()
+  {
+    return date("Y-m");
+  }
+
+  /**
+   * Returns formatted date: current year, current month, first day of current
+   * month.
+   *
+   * @return String
+   */
+  static public function getBeginningOfTheCurrentMonthDate()
   {
     return date("Y-m-01");
   }
 
-  static public function getEndingOfTheMonthDate()
+  /**
+   * Returns formatted date: current year, current month, last day of current
+   * month.
+   *
+   * @return String
+   */
+  static public function getEndingOfTheCurrentMonthDate()
   {
     return date("Y-m-".self::getDaysOfMonth(date("m")));
   }

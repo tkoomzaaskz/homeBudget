@@ -16,6 +16,73 @@
 class chartActions extends sfActions
 {
  /**
+  * Displays monthly balance bars chart.
+  *
+  * @param sfRequest A request object
+  */
+  public function executeMonthlyBalanceBars(sfWebRequest $request)
+  {
+    ChartDataManager::getMonthlyBalanceBarsData($request->getParameter('chart'));
+    switch ($request->getParameter('mode'))
+    {
+      case 'execute':
+        $this->form = new MonthlyBalanceBarsChartForm();
+        $this->getResponse()->addJavascript('chart/monthly_balance_bars.js');
+        break;
+      case 'calculate':
+        $this->calculateMonthlyBalanceBars($request);
+        return sfView::NONE;
+      default:
+        throw new sfException('Unknown action mode in '.get_class($this));
+    }
+  }
+
+  /**
+   * Calculate data for monthly balance bars chart.
+   *
+   * @param sfWebRequest $request
+   * @return NONE
+   */
+  private function calculateMonthlyBalanceBars(sfWebRequest $request)
+  {
+    sfConfig::set('sf_web_debug', false);
+    $g = new stGraph();
+    $data = ChartDataManager::getMonthlyBalanceBarsData($request->getParameter('chart'));
+
+    $bar_incomes = new bar_3d( 75, '#00BB00');
+    $bar_incomes->key( 'przychody', 10 );
+    $bar_incomes->data = $data['incomes'];
+    $g->data_sets[] = $bar_incomes;
+
+    $bar_outcomes = new bar_3d( 75, '#BB0000');
+    $bar_outcomes->key( 'wydatki', 10 );
+    $bar_outcomes->data = $data['outcomes'];
+    $g->data_sets[] = $bar_outcomes;
+
+    $bar_balances = new bar_3d( 75, '#BBBB00');
+    $bar_balances->key( 'oszczędności', 10 );
+    $bar_balances->data = $data['balances'];
+    $g->data_sets[] = $bar_balances;
+
+    $g->set_y_max(10000);
+    $g->y_label_steps(5);
+    $g->set_y_legend( 'Sumy pieniedzy', 12, '#736AFF' );
+    $g->set_tool_tip( '#x_label#: #val# zł' );
+
+    $g->set_x_axis_3d( 12 );
+    $g->set_x_labels($data['keys']);
+    $g->x_axis_colour( '#909090', '#ADB5C7' );
+    $g->y_axis_colour( '#909090', '#ADB5C7' );
+
+    $g->title( 'Bilans miesięczny', '{font-size:20px; color: #FFFFFF; margin: 5px; background-color: #505050; padding:5px; padding-left: 20px; padding-right: 20px;}' );
+
+    echo $g->render();
+    return sfView::NONE;
+  }
+
+/******************************************************************************/
+
+ /**
   * Displays category pie chart.
   *
   * @param sfRequest A request object

@@ -16,15 +16,6 @@ outcome_category:
     column:               id
     with_wildcard_routes: true
 
-category:
-  class: sfDoctrineRouteCollection
-  options:
-    model:                Category
-    module:               category
-    prefix_path:          /category
-    column:               id
-    with_wildcard_routes: true
-
 income:
   class: sfDoctrineRouteCollection
   options:
@@ -46,6 +37,10 @@ outcome:
 chart_category_pie:
   url:   /chart/category-pie/:mode
   param: { module: chart, action: categoryPie, mode: execute }
+
+chart_monthly_balance_bars:
+  url:   /chart/monthly-balance-bars/:mode
+  param: { module: chart, action: monthlyBalanceBars, mode: execute }
 
 homepage:
   url:   /

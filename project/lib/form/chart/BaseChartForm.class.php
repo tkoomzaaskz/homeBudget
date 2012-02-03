@@ -28,8 +28,8 @@ class BaseChartForm extends BaseForm
     ));
 
     $this->setDefaults(array(
-      'date_from' => Tools::getBeginningOfTheMonthDate(),
-      'date_to' => Tools::getEndingOfTheMonthDate(),
+      'date_from' => Tools::getBeginningOfTheCurrentMonthDate(),
+      'date_to' => Tools::getEndingOfTheCurrentMonthDate(),
     ));
 
     $this->widgetSchema->setNameFormat('chart[%s]');
