@@ -98,12 +98,32 @@ class ChartDataManager
       ->execute();
 
     // construct result array
-    $result = array();
+    $calc = array();
     foreach ($categories as $category)
     {
-      $sum = $category['cash_total_sum'];
-      if ($sum) // not to add zero outcomes
-        $result[$category['name']] = Tools::priceFormat($sum);
+      $calc[$category['id']] = array(
+        'name' => $category['name'],
+        'parent_id' => $category['parent_id'],
+        'sum' => $category['cash_total_sum'],
+      );
+    }
+
+    // sum subcategories
+    if ($chart['sum_subcategories'] == 'true')
+      foreach ($calc as $id => &$r)
+      {
+        if ($r['parent_id'])
+        {
+          $calc[$r['parent_id']]['sum'] += $r['sum'];
+          unset($calc[$id]);
+        }
+      }
+
+    $result = array();
+    foreach ($calc as $r)
+    {
+      if ($r['sum'] > 0)
+        $result[$r['name']] = Tools::priceFormat($r['sum']);
     }
     return $result;
   }

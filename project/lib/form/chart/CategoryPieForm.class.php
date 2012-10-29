@@ -25,5 +25,14 @@ class CategoryPieChartForm extends BaseChartForm
 
     $this->widgetSchema->setLabel('created_by', 'Utworzył(a)');
     $this->setDefault('created_by', null);
+
+    $this->setWidget('sum_subcategories', new sfWidgetFormInputCheckbox());
+
+    $this->setValidator('sum_subcategories', new sfValidatorBoolean(array(
+      'required' => false
+    )));
+
+    $this->widgetSchema->setLabel('sum_subcategories', 'Sumuj podkategorie');
+    $this->setDefault('sum_subcategories', false);
   }
 }
