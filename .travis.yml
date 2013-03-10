@@ -1,0 +1,7 @@
+language: php
+
+php:
+  - 5.2
+  - 5.3
+
+script: php -dshort_open_tag=Off -dmagic_quotes_gpc=Off data/bin/symfony symfony:test --trace
