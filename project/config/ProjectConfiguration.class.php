@@ -9,5 +9,6 @@ class ProjectConfiguration extends sfProjectConfiguration
   {
     $this->enableAllPluginsExcept('sfPropelPlugin');
     $this->setWebDir($this->getRootDir().'/../public_html');
+    $this->enablePlugins('sfDoctrineRestGeneratorPlugin');
   }
 }
