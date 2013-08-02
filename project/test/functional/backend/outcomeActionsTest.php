@@ -5,10 +5,10 @@ include(dirname(__FILE__).'/../../bootstrap/functional.php');
 $browser = new sfTestFunctional(new sfBrowser());
 
 $browser->
-  get('/td_subpage/index')->
+  get('/outcome/index')->
 
   with('request')->begin()->
-    isParameter('module', 'td_subpage')->
+    isParameter('module', 'outcome')->
     isParameter('action', 'index')->
   end()->
 
