@@ -14,5 +14,6 @@ project/lib/model/map/*
 
 public_html/web/uploads/*
 public_html/web/*Plugin/*
+public_html/error_log
 
 nbproject/
