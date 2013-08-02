@@ -5,6 +5,6 @@ all:
   doctrine:
     class: sfDoctrineDatabase
     param:
-      dsn:      mysql:host=localhost;dbname=ad9bis_finances
-      username: ad9bis_financer
-      password: 3CWSrOVLweG0
+      dsn:      mysql:host=__HOST__;dbname=__DBNAME__
+      username: __USERNAME__
+      password: __PASSWORD__
