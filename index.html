@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Duck-symfony-webapp by wealthy-laughing-duck</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Duck-symfony-webapp</h1>
+        <p>Manage your home finances with an easy web app</p>
+
+        <p class="view"><a href="https://github.com/wealthy-laughing-duck/duck-symfony-webapp">View the Project on GitHub <small>wealthy-laughing-duck/duck-symfony-webapp</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/wealthy-laughing-duck/duck-symfony-webapp/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/wealthy-laughing-duck/duck-symfony-webapp/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/wealthy-laughing-duck/duck-symfony-webapp">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a name="the-wealthy-laughing-duck-project" class="anchor" href="#the-wealthy-laughing-duck-project"><span class="octicon octicon-link"></span></a>The Wealthy Laughing Duck Project</h1>
+
+<p>Visit <a href="http://wealthy-laughing-duck.github.io/">project website</a> for more information.</p>
+
+<h2>
+<a name="symfony-web-application" class="anchor" href="#symfony-web-application"><span class="octicon octicon-link"></span></a>Symfony Web Application</h2>
+
+<p>This component is a standalone web application built with
+<a href="http://symfony.com/legacy">symfony PHP framework (version 1.4)</a>
+and <a href="http://teethgrinder.co.uk/open-flash-chart/">Open Flash Chart</a>.
+It requires a webserver (e.g. apache) with PHP5 and a SQL database.</p>
+
+<h2>
+<a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h2>
+
+<p>First, run the install shell script:</p>
+
+<pre><code>$ ./install.sh
+</code></pre>
+
+<p>to fetch symfony sources from github. This script will load the dependency
+as a git submodule and will set an appropriate branch. Afterwards, project
+permissions are set (writable on <code>cache</code> and <code>log</code> directories) using
+symfony command line.</p>
+
+<p>Then, you shall create a database and fill it with data, you'll find helpful
+scripts in the <a href="data/sql%20directory">project/data/sql</a>. After this you shall
+set database permissions in config/databases.yml.</p>
+
+<h2>
+<a name="shared-hosting-configuration" class="anchor" href="#shared-hosting-configuration"><span class="octicon octicon-link"></span></a>Shared hosting configuration</h2>
+
+<p>This project is configured for shared hostings. Check out more information
+about this configuration on <a href="http://symfony-world.blogspot.com/2010/01/configuring-symfony-application-on.html">symfony world blog</a>.</p>
+
+<h2>
+<a name="continuous-intergation" class="anchor" href="#continuous-intergation"><span class="octicon octicon-link"></span></a>Continuous intergation</h2>
+
+<p>( <em>work in progress</em> )</p>
+
+<p><a href="https://travis-ci.org/wealthy-laughing-duck/duck-symfony-webapp"><img src="https://travis-ci.org/wealthy-laughing-duck/duck-symfony-webapp.png" alt="Build Status"></a></p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/wealthy-laughing-duck">wealthy-laughing-duck</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-43456870-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+  </body>
+</html>
