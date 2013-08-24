@@ -7,8 +7,8 @@ Symfony Web Application
 -----------------------
 
 This component is a standalone web application built with
-symfony PHP framework (version 1.4)](http://symfony.com/legacy)
-and [[Open Flash Chart](http://teethgrinder.co.uk/open-flash-chart/).
+[symfony PHP framework (version 1.4)](http://symfony.com/legacy)
+and [Open Flash Chart](http://teethgrinder.co.uk/open-flash-chart/).
 It requires a webserver (e.g. apache) with PHP5 and a SQL database.
 
 Continuous intergation
