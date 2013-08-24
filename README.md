@@ -14,6 +14,6 @@ It requires a webserver (e.g. apache) with PHP5 and a SQL database.
 Continuous intergation
 ----------------------
 
-(*to be updated: this project was moved from personal repository*)
+(*work in progress*)
 
-[![Build Status](https://travis-ci.org/tkoomzaaskz/homeBudget.png)](https://travis-ci.org/tkoomzaaskz/homeBudget)
+[![Build Status](https://travis-ci.org/wealthy-laughing-duck/duck-symfony-webapp.png)](https://travis-ci.org/wealthy-laughing-duck/duck-symfony-webapp)
