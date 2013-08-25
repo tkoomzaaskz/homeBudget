@@ -1,14 +1,14 @@
 <?php
 
 /**
- * outcome actions.
+ * outcomes actions.
  *
  * @package    finances
  * @class      outcomeActions
  * @author     Tomasz Ducin <tomasz.ducin@gmail.com>
  * @version    SVN: $Id: actions.class.php
  */
-class outcomeActions extends sfActions {
+class outcomesActions extends sfActions {
 
   public function preExecute() {
     $this->getResponse()->setHttpHeader('Content-type', 'application/json');

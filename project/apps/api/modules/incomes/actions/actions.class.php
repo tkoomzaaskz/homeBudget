@@ -1,14 +1,14 @@
 <?php
 
 /**
- * income actions.
+ * incomes actions.
  *
  * @package    finances
  * @class      incomeActions
  * @author     Tomasz Ducin <tomasz.ducin@gmail.com>
  * @version    SVN: $Id: actions.class.php
  */
-class incomeActions extends sfActions
+class incomesActions extends sfActions
 {
   public function preExecute() {
     $this->getResponse()->setHttpHeader('Content-type', 'application/json');
@@ -36,7 +36,6 @@ class incomeActions extends sfActions
     $income = Doctrine::getTable('Income')
       ->findOneById($request->getParameter('id'))
       ->getData();
-    $this->translate($income);
     return $this->renderText(json_encode($income));
   }
 }
