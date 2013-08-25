@@ -25,7 +25,7 @@ permissions are set (writable on `cache` and `log` directories) using
 symfony command line.
 
 Then, you shall create a database and fill it with data, you'll find helpful
-scripts in the [project/data/sql](data/sql directory). After this you shall
+scripts in the [project/data/sql directory](data/sql). After this you shall
 set database permissions in config/databases.yml.
 
 Shared hosting configuration
