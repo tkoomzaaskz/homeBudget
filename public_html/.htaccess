@@ -1,5 +1,12 @@
 Options +FollowSymLinks +ExecCGI
 
+<Files "api*">
+  AuthType basic
+  AuthName "Private area"
+  AuthUserFile .htpasswd
+  Require valid-user
+</Files>
+
 <IfModule mod_rewrite.c>
   RewriteEngine On
 

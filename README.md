@@ -34,7 +34,26 @@ Shared hosting configuration
 This project is configured for shared hostings. Check out more information
 about this configuration on [symfony world blog](http://symfony-world.blogspot.com/2010/01/configuring-symfony-application-on.html).
 
-Continuous intergation
+Applications
+------------
+
+There's no `frontend` application. Backend app is the default one, it enables
+users to manage their finances after successful login. There's also an API app
+that allows external systems to communicate with the system.
+
+Basic API
+---------
+
+To access the api, you need to pass appropriate password
+([Basic HTTP Authentication](http://httpd.apache.org/docs/2.2/mod/mod_auth_basic.html)).
+The default password (stored in this repo) is: `Hm0ByIEe5aGhNdov`. You may
+override it, of course - modify [.htpasswd](public_html/.htpasswd) file in this
+case.
+
+Probably, you'll have to override the `AuthUserFile` in
+[.htaccess](public_html/.htaccess) file, since Apache requires absolute path.
+
+Continuous Intergation
 ----------------------
 
 ( *work in progress* )
