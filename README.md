@@ -56,6 +56,13 @@ Probably, you'll have to override the `AuthUserFile` in
 Continuous Intergation
 ----------------------
 
-( *work in progress* )
+Before the tests can be run, few additional steps have to be performed:
+
+ * creating empty database
+ * loading static mysql dump into newly created database
+ * copying databases.travis.yml configuration file, since travis doesn't support `GRANT PRIVILEGES` statement
+ * finally, running all tests (sample unit test and some functional)
+
+Look at [travis file](.travis.yml) for more details.
 
 [![Build Status](https://travis-ci.org/wealthy-laughing-duck/duck-symfony-webapp.png)](https://travis-ci.org/wealthy-laughing-duck/duck-symfony-webapp)
