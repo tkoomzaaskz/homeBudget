@@ -56,7 +56,7 @@ permissions are set (writable on <code>cache</code> and <code>log</code> directo
 symfony command line.</p>
 
 <p>Then, you shall create a database and fill it with data, you'll find helpful
-scripts in the <a href="data/sql%20directory">project/data/sql</a>. After this you shall
+scripts in the <a href="data/sql">project/data/sql directory</a>. After this you shall
 set database permissions in config/databases.yml.</p>
 
 <h2>
@@ -66,9 +66,35 @@ set database permissions in config/databases.yml.</p>
 about this configuration on <a href="http://symfony-world.blogspot.com/2010/01/configuring-symfony-application-on.html">symfony world blog</a>.</p>
 
 <h2>
-<a name="continuous-intergation" class="anchor" href="#continuous-intergation"><span class="octicon octicon-link"></span></a>Continuous intergation</h2>
+<a name="applications" class="anchor" href="#applications"><span class="octicon octicon-link"></span></a>Applications</h2>
 
-<p>( <em>work in progress</em> )</p>
+<p>There's no <code>frontend</code> application. Backend app is the default one, it enables
+users to manage their finances after successful login. There's also an API app
+that allows external systems to communicate with the system.</p>
+
+<h2>
+<a name="basic-api" class="anchor" href="#basic-api"><span class="octicon octicon-link"></span></a>Basic API</h2>
+
+<p>To access the api, you need to pass appropriate password
+(<a href="http://httpd.apache.org/docs/2.2/mod/mod_auth_basic.html">Basic HTTP Authentication</a>).
+The default password (stored in this repo) is: <code>Hm0ByIEe5aGhNdov</code>. You may
+override it, of course - modify <a href="public_html/.htpasswd">.htpasswd</a> file in this
+case.</p>
+
+<p>Probably, you'll have to override the <code>AuthUserFile</code> in
+<a href="public_html/.htaccess">.htaccess</a> file, since Apache requires absolute path.</p>
+
+<h2>
+<a name="continuous-intergation" class="anchor" href="#continuous-intergation"><span class="octicon octicon-link"></span></a>Continuous Intergation</h2>
+
+<p>Before the tests can be run, few additional steps have to be performed:</p>
+
+<ul>
+<li>creating empty database</li>
+<li>loading static mysql dump into newly created database</li>
+<li>copying databases.travis.yml configuration file, since travis doesn't support <code>GRANT PRIVILEGES</code> statement</li>
+<li>finally, running all tests (sample unit test and some functional)</li>
+</ul><p>Look at <a href=".travis.yml">travis file</a> for more details.</p>
 
 <p><a href="https://travis-ci.org/wealthy-laughing-duck/duck-symfony-webapp"><img src="https://travis-ci.org/wealthy-laughing-duck/duck-symfony-webapp.png" alt="Build Status"></a></p>
       </section>
