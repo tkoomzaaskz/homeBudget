@@ -1,6 +1,5 @@
 project/cache/*
 project/log/*
-project/config/databases.yml
 project/config/propel.ini
 project/data/sql/*
 project/lib/filter/doctrine/base/Base*

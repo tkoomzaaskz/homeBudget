@@ -4,4 +4,11 @@ php:
   - 5.2
   - 5.3
 
-script: php -dshort_open_tag=Off -dmagic_quotes_gpc=Off project/symfony test:all --trace
+before_script:
+  - php project/symfony project:permissions
+  - mysql -e "CREATE DATABASE duck_symfony;"
+  - mysql duck_symfony < project/data/sql/schema.sql
+  - cp project/config/databases.travis.yml project/config/databases.yml
+
+script:
+  - php -dshort_open_tag=Off -dmagic_quotes_gpc=Off project/symfony test:all --trace

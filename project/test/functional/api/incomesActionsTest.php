@@ -21,7 +21,7 @@ $decoded = json_decode($content, true);
 $browser->test()->is(isset($decoded['objects']), true);
 foreach($decoded['objects'] as $income)
     foreach($required_fields as $field)
-        $browser->test()->is(isset($income[$field]) || is_null($income[$field]), true);
+        $browser->test()->is(isset($income[$field]) || is_null($income[$field]), true, $field);
 
 // show test
 
@@ -37,8 +37,8 @@ $response = $browser->getResponse();
 $browser->test()->is($response->getHttpHeader('content-type'), 'application/json');
 
 $content = $response->getContent();
-$browser->test()->is($content, '{"id":"1","category_id":"35","amount":"1501.59","description":"pensja sierpie\u0144 2011","created_at":"2011-08-10 00:00:00","created_by":"1"}');
+$browser->test()->is($content, '{"id":"1","category_id":"2","amount":"10.10","description":"prezent od mikolaja","created_at":"2011-08-10 00:00:00","created_by":"1"}');
 
 $decoded = json_decode($content, true);
 foreach($required_fields as $field)
-    $browser->test()->is(isset($decoded[$field]) || is_null($income[$field]), true);
+    $browser->test()->is(isset($decoded[$field]) || is_null($income[$field]), true, $field);
