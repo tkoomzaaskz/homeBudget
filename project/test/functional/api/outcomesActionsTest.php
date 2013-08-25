@@ -37,7 +37,7 @@ $response = $browser->getResponse();
 $browser->test()->is($response->getHttpHeader('content-type'), 'application/json');
 
 $content = $response->getContent();
-$browser->test()->is($content, '{"id":"1","category_id":"1","created_at":"2011-09-01 00:00:00","created_by":"2","amount":"121.46","description":"szama"}');
+$browser->test()->is($content, '{"id":1,"category_id":1,"created_at":"2011-09-01 00:00:00","created_by":2,"amount":121.46,"description":"szama"}');
 
 $decoded = json_decode($content, true);
 foreach($required_fields as $field)
