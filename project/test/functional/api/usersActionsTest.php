@@ -10,7 +10,7 @@ $browser = new sfTestFunctional(new sfBrowser());
 $browser->get('/users')->
   with('request')->begin()->
     isParameter('module', 'users')->
-    isParameter('action', 'index')->
+    isParameter('action', 'list')->
   end();
 
 $response = $browser->getResponse();

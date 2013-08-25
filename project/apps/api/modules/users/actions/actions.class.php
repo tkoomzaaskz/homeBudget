@@ -15,18 +15,29 @@ class usersActions extends sfActions
   }
   
   /**
-   * Executes index action
+   * Executes list action
    *
    * @param sfRequest A request object
    */
-  public function executeIndex(sfWebRequest $request) {
-    $users = array(
-      'objects' => Doctrine::getTable('sfGuardUser')
-        ->findAll(Doctrine_Core::HYDRATE_ARRAY)
-    );
-    foreach ($users['objects'] as &$user)
+  public function executeList(sfWebRequest $request) {
+    $users = Doctrine::getTable('sfGuardUser')
+      ->findAll(Doctrine_Core::HYDRATE_ARRAY);
+
+    foreach ($users as &$user)
       $this->translate($user);
-    return $this->renderText(json_encode($users));
+
+    $result = array(
+      'meta' => array (
+        'limit' => null,
+        'next' => null,
+        'offset' => null,
+        'previous' => null,
+        'total_count' => count($users)
+      ),
+      'objects' => $users
+    );
+
+    return $this->renderText(json_encode($result));
   }
   
   /**
@@ -38,6 +49,7 @@ class usersActions extends sfActions
     $user = Doctrine::getTable('sfGuardUser')
       ->findOneById($request->getParameter('id'))
       ->getData();
+
     $this->translate($user);
     return $this->renderText(json_encode($user));
   }
@@ -46,5 +58,6 @@ class usersActions extends sfActions
     $remove = array('algorithm', 'salt', 'password', 'is_active', 'is_super_admin', 'last_login');
     foreach ($remove as $field)
       unset($user[$field]);
+    $user['id'] = (int) $user['id'];
   }
 }

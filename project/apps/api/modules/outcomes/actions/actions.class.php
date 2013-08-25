@@ -15,22 +15,29 @@ class outcomesActions extends sfActions {
   }
 
   /**
-   * Executes index action
+   * Executes list action
    *
    * @param sfRequest A request object
    */
-  public function executeIndex(sfWebRequest $request) {
-    $outcomes = array(
-      'objects' => Doctrine::getTable('Outcome')
-        ->findAll(Doctrine_Core::HYDRATE_ARRAY)
-    );
-    // translate response structure
-    // to be removed when database schema is updated
-    foreach ($outcomes['objects'] as &$outcome) {
-      $this->translate($outcome);
-    }
+  public function executeList(sfWebRequest $request) {
+    $outcomes = Doctrine::getTable('Outcome')
+        ->findAll(Doctrine_Core::HYDRATE_ARRAY);
 
-    return $this->renderText(json_encode($outcomes));
+    foreach ($outcomes as &$outcome)
+      $this->translate($outcome);
+
+    $result = array(
+      'meta' => array (
+        'limit' => null,
+        'next' => null,
+        'offset' => null,
+        'previous' => null,
+        'total_count' => count($outcomes)
+      ),
+      'objects' => $outcomes
+    );
+
+    return $this->renderText(json_encode($result));
   }
   
   /**
@@ -42,12 +49,18 @@ class outcomesActions extends sfActions {
     $outcome = Doctrine::getTable('Outcome')
       ->findOneById($request->getParameter('id'))
       ->getData();
+
     $this->translate($outcome);
     return $this->renderText(json_encode($outcome));
   }
 
   private function translate(&$outcome) {
-    $outcome['amount'] = $outcome['cash_total'];
+    $outcome['id'] = (int) $outcome['id'];
+    $outcome['category_id'] = (int) $outcome['category_id'];
+    $outcome['created_by'] = (int) $outcome['created_by'];
+    // translate response structure
+    // to be removed when database schema is updated
+    $outcome['amount'] = (float) $outcome['cash_total'];
     unset($outcome['cash_total']);
     $outcome['description'] = $outcome['comment'];
     unset($outcome['comment']);
