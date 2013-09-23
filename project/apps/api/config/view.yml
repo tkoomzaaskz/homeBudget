@@ -6,15 +6,13 @@ default:
     content-type: text/html
 
   metas:
-    #title:        symfony project
-    #description:  symfony project
-    #keywords:     symfony, project
-    #language:     en
-    #robots:       index, follow
+    title:        Wealthy Laughing duck
+    language:     en
+    robots:       noindex, nofollow
 
-  stylesheets:    [main.css]
+  stylesheets:    [ ../bootstrap/css/bootstrap.css, ../bootstrap/css/bootstrap-responsive.css ]
 
-  javascripts:    []
+  javascripts:    [ ../bootstrap/js/bootstrap.js ]
 
   has_layout:     true
   layout:         layout

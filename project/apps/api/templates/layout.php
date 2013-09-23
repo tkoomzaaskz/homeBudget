@@ -7,8 +7,38 @@
     <link rel="shortcut icon" href="/favicon.ico" />
     <?php include_stylesheets() ?>
     <?php include_javascripts() ?>
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+      .sidebar-nav {
+        padding: 9px 0;
+      }
+
+      @media (max-width: 980px) {
+        /* Enable use of floated navbar text */
+        .navbar-text.pull-right {
+          float: none;
+          padding-left: 5px;
+          padding-right: 5px;
+        }
+      }
+    </style>
   </head>
   <body>
-    <?php echo $sf_content ?>
+    <?php include_partial('header') ?>
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span3">
+          <div class="well sidebar-nav">
+            <?php include_partial('menu') ?>
+          </div>
+        </div>
+        <?php echo $sf_content ?>
+      </div>
+      <hr>
+    <?php include_partial('footer') ?>
+    </div>
   </body>
 </html>

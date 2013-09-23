@@ -6,8 +6,8 @@ default:
     content-type: text/html
 
   metas:
-    title:        Finanse domowe
-    language:     pl
+    title:        Wealthy Laughing duck
+    language:     en
     robots:       noindex, nofollow
 
   stylesheets:    [ main.css ]

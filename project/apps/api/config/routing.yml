@@ -11,6 +11,10 @@ list:
   url:   /:module
   param: { action: list }
 
+command:
+  url:   /command/:action
+  param: { module: main }
+
 homepage:
   url:   /
   param: { module: main, action: index }
