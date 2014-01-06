@@ -65,7 +65,7 @@ class chartActions extends sfActions
         break;
       case 'calculate':
         $graph = $this->calculateMonthlyBalanceBars($request);
-        return $this->getDataOutput($graph, 'txt');
+        return $this->getDataOutput($graph, $request->getParameter('format'));
       default:
         throw new sfException('Unknown action mode in '.get_class($this));
     }
@@ -133,7 +133,7 @@ class chartActions extends sfActions
         break;
       case 'calculate':
         $graph = $this->calculateCategoryPie($request);
-        return $this->getDataOutput($graph, 'txt');
+        return $this->getDataOutput($graph, $request->getParameter('format'));
       default:
         throw new sfException('Unknown action mode in '.get_class($this));
     }

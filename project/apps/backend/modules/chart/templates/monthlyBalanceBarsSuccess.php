@@ -1,6 +1,6 @@
-<?php echo $form['date_from']->render(array('onchange' => 'javascript:reload();')); ?>
-<?php echo $form['date_to']->render(array('onchange' => 'javascript:reload();')); ?>
-<?php echo $form['created_by']->render(array('onchange' => 'javascript:reload();')); ?>
+Od: <?php echo $form['date_from']->render(array('onchange' => 'javascript:reload();')); ?>
+Do: <?php echo $form['date_to']->render(array('onchange' => 'javascript:reload();')); ?>
+Kto: <?php echo $form['created_by']->render(array('onchange' => 'javascript:reload();')); ?>
 <br />
 <?php
   $params = array(
