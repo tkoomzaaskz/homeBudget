@@ -10,28 +10,67 @@
  */
 class BaseChartForm extends BaseForm
 {
+  private function getBaseYears()
+  {
+    $start = 2010;
+    $end = date("Y");
+    $years = range(2010, 2014);
+    return array_combine($years, $years);
+  }
+
+  protected function addDateFrom($with_days)
+  {
+    $format = $with_days ? '%day%-%month%-%year%' : '%month%-%year%';
+    $this->setWidget('date_from', new sfWidgetFormDate(array(
+      'label'   => 'Data od',
+      'format'  => $format,
+      'default' => Tools::getBeginningOfTheCurrentMonthDate(),
+      'years'   => $this->getBaseYears()
+    )));
+    $this->setValidator('date_from', new sfValidatorDate());
+  }
+
+  protected function addDateTo($with_days)
+  {
+    $format = $with_days ? '%day%-%month%-%year%' : '%month%-%year%';
+    $this->setWidget('date_to', new sfWidgetFormDate(array(
+      'label'   => 'Data do',
+      'format'  => $format,
+      'default' => Tools::getEndingOfTheCurrentMonthDate(),
+      'years'   => $this->getBaseYears()
+    )));
+    $this->setValidator('date_to', new sfValidatorDate());
+  }
+
+  protected function addCreatedBy()
+  {
+    $this->setWidget('created_by', new sfWidgetFormDoctrineChoice(array(
+      'label'     => 'Utworzył(a)',
+      'default'   => null,
+      'model'     => 'sfGuardUser',
+      'add_empty' => true
+    )));
+
+    $this->setValidator('created_by', new sfValidatorDoctrineChoice(array(
+      'required' => false,
+      'model' => 'sfGuardUser',
+      'column' => 'id'
+    )));
+  }
+
+  protected function addSumSubcategories()
+  {
+    $this->setWidget('sum_subcategories', new sfWidgetFormInputCheckbox());
+    $this->widgetSchema->setLabel('sum_subcategories', 'Sumuj podkategorie');
+    $this->setDefault('sum_subcategories', false);
+
+    $this->setValidator('sum_subcategories', new sfValidatorBoolean(array(
+      'required' => false
+    )));
+  }
+
   public function setUp()
   {
-    $this->setWidgets(array(
-      'date_from' => new sfWidgetFormInputText(),
-      'date_to'   => new sfWidgetFormInputText(),
-    ));
-
-    $this->setValidators(array(
-      'date_from' => new sfValidatorDateTime(),
-      'date_to'   => new sfValidatorDateTime(),
-    ));
-
-    $this->widgetSchema->setLabels(array(
-      'date_from' => 'Data od',
-      'date_to'   => 'Data do',
-    ));
-
-    $this->setDefaults(array(
-      'date_from' => Tools::getBeginningOfTheCurrentMonthDate(),
-      'date_to' => Tools::getEndingOfTheCurrentMonthDate(),
-    ));
-
     $this->widgetSchema->setNameFormat('chart[%s]');
   }
 }

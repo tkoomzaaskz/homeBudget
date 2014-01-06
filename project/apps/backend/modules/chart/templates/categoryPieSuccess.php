@@ -1,15 +1,17 @@
 <?php echo $form['date_from']->renderLabel() ?>:
 <?php echo $form['date_from']->render(array('onchange' => 'javascript:reload();')); ?>
+<br />
 
 <?php echo $form['date_to']->renderLabel() ?>:
 <?php echo $form['date_to']->render(array('onchange' => 'javascript:reload();')); ?>
+<br />
 
 <?php echo $form['created_by']->renderLabel() ?>:
 <?php echo $form['created_by']->render(array('onchange' => 'javascript:reload();')); ?>
+<br />
 
 <?php echo $form['sum_subcategories']->renderLabel() ?>:
 <?php echo $form['sum_subcategories']->render(array('onchange' => 'javascript:reload();')); ?>
-
 <br />
 
 <?php
