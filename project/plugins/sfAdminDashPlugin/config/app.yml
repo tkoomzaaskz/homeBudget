@@ -5,7 +5,7 @@ all:
     default_image:                config.png
     resize_mode:                  thumbnail
     logout:                       true
-    site:                         Finances
+    site:                         Wealthy Laughing Duck
     include_path:                 true
     include_jquery_no_conflict:   false
     login_route:                  @sf_guard_signin
