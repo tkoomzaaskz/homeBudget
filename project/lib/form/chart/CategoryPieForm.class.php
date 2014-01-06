@@ -16,5 +16,10 @@ class CategoryPieChartForm extends BaseChartForm
     $this->addDateTo(true);
     $this->addCreatedBy();
     $this->addSumSubcategories();
+
+    $this->setDefaults(array(
+      'date_from' => Tools::getBeginningOfTheCurrentMonthDate(),
+      'date_to' => Tools::getEndingOfTheCurrentMonthDate(),
+    ));
   }
 }

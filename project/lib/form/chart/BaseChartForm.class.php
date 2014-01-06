@@ -21,10 +21,11 @@ class BaseChartForm extends BaseForm
   protected function addDateFrom($with_days)
   {
     $format = $with_days ? '%day%-%month%-%year%' : '%month%-%year%';
+    $default = $with_days ? Tools::getBeginningOfTheCurrentMonthDate() : Tools::getCurrentMonthDate();
     $this->setWidget('date_from', new sfWidgetFormDate(array(
       'label'   => 'Data od',
       'format'  => $format,
-      'default' => Tools::getBeginningOfTheCurrentMonthDate(),
+      'default' => $default,
       'years'   => $this->getBaseYears()
     )));
     $this->setValidator('date_from', new sfValidatorDate());
@@ -33,10 +34,11 @@ class BaseChartForm extends BaseForm
   protected function addDateTo($with_days)
   {
     $format = $with_days ? '%day%-%month%-%year%' : '%month%-%year%';
+    $default = $with_days ? Tools::getEndingOfTheCurrentMonthDate() : Tools::getCurrentMonthDate();
     $this->setWidget('date_to', new sfWidgetFormDate(array(
       'label'   => 'Data do',
       'format'  => $format,
-      'default' => Tools::getEndingOfTheCurrentMonthDate(),
+      'default' => $default,
       'years'   => $this->getBaseYears()
     )));
     $this->setValidator('date_to', new sfValidatorDate());
