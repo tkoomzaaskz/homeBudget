@@ -10,6 +10,8 @@
  */
 class BaseChartForm extends BaseForm
 {
+  protected $culture = 'pl';
+
   private function getBaseYears()
   {
     $start = 2010;
@@ -22,8 +24,10 @@ class BaseChartForm extends BaseForm
   {
     $format = $with_days ? '%day%-%month%-%year%' : '%month%-%year%';
     $default = $with_days ? Tools::getBeginningOfTheCurrentMonthDate() : Tools::getCurrentMonthDate();
-    $this->setWidget('date_from', new sfWidgetFormDate(array(
+    $this->setWidget('date_from', new sfWidgetFormI18nDate(array(
+      'culture' => $this->culture,
       'label'   => 'Data od',
+      'can_be_empty' => false,
       'format'  => $format,
       'default' => $default,
       'years'   => $this->getBaseYears()
@@ -35,8 +39,10 @@ class BaseChartForm extends BaseForm
   {
     $format = $with_days ? '%day%-%month%-%year%' : '%month%-%year%';
     $default = $with_days ? Tools::getEndingOfTheCurrentMonthDate() : Tools::getCurrentMonthDate();
-    $this->setWidget('date_to', new sfWidgetFormDate(array(
+    $this->setWidget('date_to', new sfWidgetFormI18nDate(array(
+      'culture' => $this->culture,
       'label'   => 'Data do',
+      'can_be_empty' => false,
       'format'  => $format,
       'default' => $default,
       'years'   => $this->getBaseYears()
