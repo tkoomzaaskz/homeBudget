@@ -30,7 +30,8 @@ class chartActions extends sfActions
         $this->getResponse()->addJavascript('chart/base.js');
         break;
       case 'calculate':
-        $this->calculateMonthlyBalanceBars($request);
+        $g = $this->calculateMonthlyBalanceBars($request);
+        echo $g->render();
         return sfView::NONE;
       default:
         throw new sfException('Unknown action mode in '.get_class($this));
@@ -41,7 +42,7 @@ class chartActions extends sfActions
    * Calculate data for monthly balance bars chart.
    *
    * @param sfWebRequest $request
-   * @return NONE
+   * @return stGraph
    */
   private function calculateMonthlyBalanceBars(sfWebRequest $request)
   {
@@ -78,8 +79,7 @@ class chartActions extends sfActions
 
     $g->title( 'Bilans miesięczny', '{font-size:20px; color: #FFFFFF; margin: 5px; background-color: #505050; padding:5px; padding-left: 20px; padding-right: 20px;}' );
 
-    echo $g->render();
-    return sfView::NONE;
+    return $g;
   }
 
 /******************************************************************************/
@@ -99,7 +99,8 @@ class chartActions extends sfActions
         $this->getResponse()->addJavascript('chart/base.js');
         break;
       case 'calculate':
-        $this->calculateCategoryPie($request);
+        $g = $this->calculateCategoryPie($request);
+        echo $g->render();
         return sfView::NONE;
       default:
         throw new sfException('Unknown action mode in '.get_class($this));
@@ -110,7 +111,7 @@ class chartActions extends sfActions
    * Calculate data for category pie chart.
    *
    * @param sfWebRequest $request
-   * @return NONE
+   * @return stGraph
    */
   private function calculateCategoryPie(sfWebRequest $request)
   {
@@ -125,15 +126,14 @@ class chartActions extends sfActions
     $g->set_tool_tip( '#x_label#: #val# zł' );
     $g->title('Wydatki na poszczególne kategorie', '{font-size:18px; color: #18A6FF}' );
 
-    echo $g->render();
-    return sfView::NONE;
+    return $g;
   }
 
   /**
    * Calculate data for category bar chart.
    *
    * @param sfWebRequest $request
-   * @return NONE
+   * @return stGraph
    */
   private function calculateCategoryBar(sfWebRequest $request)
   {
@@ -156,7 +156,6 @@ class chartActions extends sfActions
     $g->set_tool_tip( '#x_label#: #val# zł' );
     $g->title('Wydatki na poszczególne kategorie', '{font-size:18px; color: #18A6FF}' );
 
-    echo $g->render();
-    return sfView::NONE;
+    return $g;
   }
 }
