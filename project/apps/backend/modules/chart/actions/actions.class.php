@@ -15,6 +15,40 @@
  */
 class chartActions extends sfActions
 {
+  /**
+   * Returns stGraph object data transformed into JSON format.
+   *
+   * @param sfRequest A request object
+   * @return JSON String
+   */
+  private function getJson($data)
+  {
+    $lines = explode("\n", $data);
+    $result = array();
+    foreach ($lines as $line)
+    {
+      $line = substr($line, 1, strlen($line) - 3);
+      $line_tmp = explode('=', $line);
+      $attr = $line_tmp[0];
+      $value = explode(',', $line_tmp[1]);
+      $result[$attr] = $value;
+    }
+    return json_encode($result);
+  }
+
+  private function getDataOutput($graph, $format)
+  {
+    $content = $graph->render();
+    switch($format) {
+      case 'txt':
+        echo $content;
+        return sfView::NONE;
+      case 'json':
+        echo $this->getJson($content);
+        return sfView::NONE;
+    }
+  }
+
  /**
   * Displays monthly balance bars chart.
   *
@@ -30,9 +64,8 @@ class chartActions extends sfActions
         $this->getResponse()->addJavascript('chart/base.js');
         break;
       case 'calculate':
-        $g = $this->calculateMonthlyBalanceBars($request);
-        echo $g->render();
-        return sfView::NONE;
+        $graph = $this->calculateMonthlyBalanceBars($request);
+        return $this->getDataOutput($graph, 'txt');
       default:
         throw new sfException('Unknown action mode in '.get_class($this));
     }
@@ -99,9 +132,8 @@ class chartActions extends sfActions
         $this->getResponse()->addJavascript('chart/base.js');
         break;
       case 'calculate':
-        $g = $this->calculateCategoryPie($request);
-        echo $g->render();
-        return sfView::NONE;
+        $graph = $this->calculateCategoryPie($request);
+        return $this->getDataOutput($graph, 'txt');
       default:
         throw new sfException('Unknown action mode in '.get_class($this));
     }
