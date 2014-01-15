@@ -98,7 +98,7 @@ class chartActions extends sfActions
     $bar_balances->data = $data['balances'];
     $g->data_sets[] = $bar_balances;
 
-    $g->set_y_max(ChartDataManager::roundToMax($data));
+    $g->set_y_max(ChartDataManager::roundToMax($data['incomes'], $data['outcomes']));
     $g->y_label_steps(5);
     $g->set_y_legend( 'Sumy pieniedzy', 12, '#736AFF' );
     $g->set_tool_tip( '#x_label#: #val# zł' );

@@ -83,11 +83,11 @@ class ChartDataManager
   }
 
   /**
-   * Returns the biggest value present in array of arrays of values.
+   * Returns the biggest absolute value passed in either incomes or outcomes.
    */
-  static function roundToMax($arrays_of_values)
+  static function roundToMax($incomes, $outcomes)
   {
-    $max = max(array_map("max", $values));
+    $max = max(max($incomes), abs(min($outcomes)));
     $i = 0;
     $copy = $max;
     while ($copy > 10)
@@ -95,7 +95,7 @@ class ChartDataManager
       $copy /= 10;
       $i++;
     }
-    return round($max, -$i);
+    return round($max, -$i, PHP_ROUND_HALF_UP);
   }
 
 /******************************************************************************/
