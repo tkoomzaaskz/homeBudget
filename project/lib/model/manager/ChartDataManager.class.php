@@ -95,7 +95,7 @@ class ChartDataManager
       $copy /= 10;
       $i++;
     }
-    return round($max, -$i, PHP_ROUND_HALF_UP);
+    return round($max, -$i);
   }
 
 /******************************************************************************/
