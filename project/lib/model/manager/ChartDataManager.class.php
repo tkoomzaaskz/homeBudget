@@ -82,9 +82,12 @@ class ChartDataManager
     return $result;
   }
 
-  static function roundToMax($values)
+  /**
+   * Returns the biggest value present in array of arrays of values.
+   */
+  static function roundToMax($arrays_of_values)
   {
-    $max = max($values);
+    $max = max(array_map("max", $values));
     $i = 0;
     $copy = $max;
     while ($copy > 10)
