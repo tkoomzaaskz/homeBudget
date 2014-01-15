@@ -98,7 +98,7 @@ class chartActions extends sfActions
     $bar_balances->data = $data['balances'];
     $g->data_sets[] = $bar_balances;
 
-    $g->set_y_max(10000);
+    $g->set_y_max(ChartDataManager::roundToMax($data['incomes']));
     $g->y_label_steps(5);
     $g->set_y_legend( 'Sumy pieniedzy', 12, '#736AFF' );
     $g->set_tool_tip( '#x_label#: #val# zł' );
@@ -110,7 +110,7 @@ class chartActions extends sfActions
     $g->x_axis_colour('#909090', '#ADB5C7');
     $g->y_axis_colour('#909090', '#ADB5C7');
 
-    $g->title( 'Bilans miesięczny', '{font-size:20px; color: #FFFFFF; margin: 5px; background-color: #505050; padding:5px; padding-left: 20px; padding-right: 20px;}' );
+    $g->title('Bilans miesięczny', '{font-size:20px; color: #FFFFFF; margin: 5px; background-color: #505050; padding:5px; padding-left: 20px; padding-right: 20px;}' );
 
     return $g;
   }

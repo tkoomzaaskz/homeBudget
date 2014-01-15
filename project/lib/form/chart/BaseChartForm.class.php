@@ -77,6 +77,17 @@ class BaseChartForm extends BaseForm
     )));
   }
 
+  protected function addSumPeriods()
+  {
+    $this->setWidget('sum_periods', new sfWidgetFormInputCheckbox());
+    $this->widgetSchema->setLabel('sum_periods', 'Sumuj okresy');
+    $this->setDefault('sum_periods', false);
+
+    $this->setValidator('sum_periods', new sfValidatorBoolean(array(
+      'required' => false
+    )));
+  }
+
   public function setUp()
   {
     $this->widgetSchema->setNameFormat('chart[%s]');

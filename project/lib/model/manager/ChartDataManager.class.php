@@ -82,6 +82,19 @@ class ChartDataManager
     return $result;
   }
 
+  static function roundToMax($values)
+  {
+    $max = max($values);
+    $i = 0;
+    $copy = $max;
+    while ($copy > 10)
+    {
+      $copy /= 10;
+      $i++;
+    }
+    return round($max, -$i);
+  }
+
 /******************************************************************************/
 
   /**
@@ -176,13 +189,23 @@ class ChartDataManager
       ->getIncomeMonthlySumByDateRange($chart['date_from'].'-01', $chart['date_to'].'-31', $chart['created_by']);
     $incomes = self::getPeriodedArray($periods, $incomes_raw);
 
-    $balances = self::getBalancedValueArray($incomes, $outcomes);
-
-    return array(
-      'keys' => self::getArrayKeys($incomes, $outcomes),
-      'incomes' => self::clearArrayKeys($incomes),
-      'outcomes' => self::clearArrayKeys($outcomes),
-      'balances' => self::clearArrayKeys($balances),
-    );
+    if ($chart['sum_periods'] == 'true') {
+      $total_income = array_sum($incomes);
+      $total_outcome = array_sum($outcomes);
+      return array(
+        'keys' => array($chart['date_from'] . ' - ' . $chart['date_to']),
+        'incomes' => array($total_income),
+        'outcomes' => array($total_outcome),
+        'balances' => array($total_income - $total_outcome),
+      );
+    } else {
+      $balances = self::getBalancedValueArray($incomes, $outcomes);
+      return array(
+        'keys' => self::getArrayKeys($incomes, $outcomes),
+        'incomes' => self::clearArrayKeys($incomes),
+        'outcomes' => self::clearArrayKeys($outcomes),
+        'balances' => self::clearArrayKeys($balances),
+      );
+    }
   }
 }

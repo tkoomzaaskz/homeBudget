@@ -10,12 +10,17 @@
 <?php echo $form['created_by']->render(array('onchange' => 'javascript:reload();')); ?>
 <br />
 
+<?php echo $form['sum_periods']->renderLabel() ?>:
+<?php echo $form['sum_periods']->render(array('onchange' => 'javascript:reload();')); ?>
+<br />
+
 <?php
   $params = array(
     'mode' => 'calculate',
     'chart[date_from]' => $form->getDefault('date_from'),
     'chart[date_to]' => $form->getDefault('date_to'),
     'chart[created_by]' => $form->getDefault('created_by'),
+    'chart[sum_periods]' => $form->getDefault('sum_periods'),
     'format' => 'txt'
   );
   stOfc::createChart(

@@ -15,6 +15,7 @@ class MonthlyBalanceBarsChartForm extends BaseChartForm
     $this->addDateFrom(false);
     $this->addDateTo(false);
     $this->addCreatedBy();
+    $this->addSumPeriods();
 
     $this->setDefaults(array(
       'date_from' => Tools::getCurrentMonthDate(),
