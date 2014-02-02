@@ -27,6 +27,8 @@ generator:
           label: Kwota
         amount_range:
           label: Zakres kwot
+        remember_date:
+          label: Zapamiętaj datę
         created_at:
           label: Utworzono
         created_by:
@@ -41,7 +43,7 @@ generator:
       filter:
         display: [ category_id, amount_range, created_by, created_at ]
       form:
-        display: [ cash_total, category_id, created_by, created_at, comment ]
+        display: [ cash_total, category_id, created_by, created_at, remember_date, comment ]
         fields:
           cash_total:
             attributes: { size: 10 }

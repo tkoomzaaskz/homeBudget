@@ -20,12 +20,24 @@ class OutcomeForm extends BaseOutcomeForm
         'table_method' => 'getCategoryTreeCollection',)
     ));
 
+    $this->setWidget('remember_date',
+      new sfWidgetFormInputCheckbox(
+    ));
+
+    $this->setValidator('remember_date',
+      new sfValidatorBoolean(
+    ));
+
     $this->widgetSchema['created_at'] = new sfWidgetFormI18nDate(array('culture' => 'pl'));
 
     if ($this->isNew())
     {
-      $this->setDefault ('created_at', date('Y-m-d H:i:s'));
-      $this->setDefault ('created_by', sfContext::getInstance()->getUser()->getId());
+      $user = sfContext::getInstance()->getUser();
+      $date = $user->hasAttribute('last_outcome_created_at') ?
+        $user->getAttribute('last_outcome_created_at') :
+        date('Y-m-d H:i:s');
+      $this->setDefault ('created_at', $date);
+      $this->setDefault ('created_by', $user->getId());
     }
 
     $this->setWidget('comment', new sfWidgetFormInputText());

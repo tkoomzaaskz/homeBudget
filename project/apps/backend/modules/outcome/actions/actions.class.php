@@ -24,4 +24,14 @@ class outcomeActions extends autoOutcomeActions
       ->fetchArray();
     $this->total_count = $total_data[0]['sum'];
   }
+
+  protected function processForm(sfWebRequest $request, sfForm $form)
+  {
+    // store created_at for new outcomes (if checked)
+    $form->bind($request->getParameter($form->getName()));
+    if ($this->form->getValue('remember_date'))
+      $this->getUser()->setAttribute('last_outcome_created_at', $this->form->getValue('created_at'));
+    // perform process
+    parent::processForm($request, $form);
+  }
 }
