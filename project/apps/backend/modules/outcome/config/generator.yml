@@ -21,8 +21,12 @@ generator:
           label: Kategoria
         comment:
           label: Komentarz
+        comment:
+          label: Komentarz
         cash_total:
           label: Kwota
+        amount_range:
+          label: Zakres kwot
         created_at:
           label: Utworzono
         created_by:
@@ -35,7 +39,7 @@ generator:
         max_per_page: 20
         table_method: getOutcomesBackendListQuery
       filter:
-        display: [ category_id, created_by, created_at ]
+        display: [ category_id, amount_range, created_by, created_at ]
       form:
         display: [ cash_total, category_id, created_by, created_at, comment ]
         fields:
