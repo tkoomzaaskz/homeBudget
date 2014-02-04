@@ -7,16 +7,16 @@
  * 
  * @property integer $category_id
  * @property string $comment
- * @property decimal $cash_total
+ * @property decimal $amount
  * @property OutcomeCategory $Category
  * 
  * @method integer         getCategoryId()  Returns the current record's "category_id" value
  * @method string          getComment()     Returns the current record's "comment" value
- * @method decimal         getCashTotal()   Returns the current record's "cash_total" value
+ * @method decimal         getAmount()      Returns the current record's "amount" value
  * @method OutcomeCategory getCategory()    Returns the current record's "Category" value
  * @method Outcome         setCategoryId()  Sets the current record's "category_id" value
  * @method Outcome         setComment()     Sets the current record's "comment" value
- * @method Outcome         setCashTotal()   Sets the current record's "cash_total" value
+ * @method Outcome         setAmount()      Sets the current record's "amount" value
  * @method Outcome         setCategory()    Sets the current record's "Category" value
  * 
  * @package    finances
@@ -37,7 +37,7 @@ abstract class BaseOutcome extends sfDoctrineRecord
              'type' => 'string',
              'notnull' => false,
              ));
-        $this->hasColumn('cash_total', 'decimal', 10, array(
+        $this->hasColumn('amount', 'decimal', 10, array(
              'type' => 'decimal',
              'notnull' => true,
              'length' => 10,

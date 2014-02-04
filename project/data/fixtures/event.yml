@@ -3,83 +3,83 @@ Event:
   materac_do_bulgarii:
     category_id: 5
 #    place: jysk, Jana Pawła
-    cash_total: 121.46
+    amount: 121.46
     created_at: '2011-09-01 17:33:41'
     created_by: 2
 
   waluta_lewy_bulgarskie_1:
     category_id: 5
 #    place: kantor, 455 LV
-    cash_total: 493.68
+    amount: 493.68
     created_at: '2011-09-02 17:48:23'
     created_by: 1
 
   waluta_lewy_bulgarskie_2:
     category_id: 5
 #    place: kantor, 455 LV
-    cash_total: 493.68
+    amount: 493.68
     created_at: '2011-09-02 17:48:23'
     created_by: 2
 
   waluta_euro_1:
     category_id: 5
 #    place: kantor, 70 E
-    cash_total: 294
+    amount: 294
     created_at: '2011-09-02 17:52:39'
     created_by: 1
 
   waluta_euro_2:
     category_id: 5
 #    place: kantor, 70 E
-    cash_total: 294
+    amount: 294
     created_at: '2011-09-02 17:52:39'
     created_by: 2
 
   picie_dla_adeli:
     category_id: 1
 #    place: maryna
-    cash_total: 7.09
+    amount: 7.09
     created_by: 2
     created_at: '2011-09-13 19:37:47'
 
   czynsz_2011_09_beata:
     category_id: 2
 #    place: dom
-    cash_total: 250
+    amount: 250
     created_by: 1
     created_at: '2011-09-13 21:05:28'
 
   czynsz_2011_09_tomek:
     category_id: 2
 #    place: dom
-    cash_total: 250
+    amount: 250
     created_by: 2
     created_at: '2011-09-13 22:27:35'
 
   pomidory_po_powrocie:
     category_id: 1
 #    place: maryna
-    cash_total: 1.87
+    amount: 1.87
     created_by: 2
     created_at: '2011-09-14 06:37:04'
 
   pieczywo_i_nabial_po_powrocie:
     category_id: 1
 #    place: lss społem
-    cash_total: 5.51
+    amount: 5.51
     created_by: 2
     created_at: '2011-09-14 06:40:25'
 
   pieczywo_na_najblizsze_dni:
     category_id: 1
 #    place: sklep spożywczy
-    cash_total: 7.12
+    amount: 7.12
     created_by: 1
     created_at: '2011-09-14 17:19:05'
 
   kukurydza_i_papryka:
     category_id: 1
 #    place: zieleniak
-    cash_total: 3.5
+    amount: 3.5
     created_by: 2
     created_at: '2011-09-14 17:47:38'

@@ -23,7 +23,7 @@ generator:
           label: Komentarz
         comment:
           label: Komentarz
-        cash_total:
+        amount:
           label: Kwota
         amount_range:
           label: Zakres kwot
@@ -36,16 +36,16 @@ generator:
         Creator:
           label: Utworzył(a)
       list:
-        display: [ Category, _cash_total, Creator, _created_at ]
+        display: [ Category, _amount, Creator, _created_at ]
         title: Lista wydatków
         max_per_page: 20
         table_method: getOutcomesBackendListQuery
       filter:
         display: [ category_id, amount_range, created_by, created_at ]
       form:
-        display: [ cash_total, category_id, created_by, created_at, remember_date, comment ]
+        display: [ amount, category_id, created_by, created_at, remember_date, comment ]
         fields:
-          cash_total:
+          amount:
             attributes: { size: 10 }
           comment:
             attributes: { size: 50 }

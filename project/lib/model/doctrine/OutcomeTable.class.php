@@ -29,7 +29,7 @@ class OutcomeTable extends Doctrine_Table
   public static function getOutcomeMonthlySumByDateRange($date_from, $date_to, $created_by = null)
   {
     $query = Doctrine_Query::create()
-      ->select('SUM(o.cash_total) AS sum, DATE_FORMAT( o.created_at, "%Y-%m" ) AS date')
+      ->select('SUM(o.amount) AS sum, DATE_FORMAT( o.created_at, "%Y-%m" ) AS date')
       ->from('Outcome o')
       ->where("o.created_at BETWEEN '{$date_from}' AND '{$date_to}'")
       ->groupBy('YEAR(o.created_at)')

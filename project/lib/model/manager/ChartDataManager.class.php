@@ -120,7 +120,7 @@ class ChartDataManager
       $calc[$category['id']] = array(
         'name' => $category['name'],
         'parent_id' => $category['parent_id'],
-        'sum' => $category['cash_total_sum'],
+        'sum' => $category['amount_sum'],
       );
     }
 

@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS `outcome` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `category_id` bigint(20) NOT NULL,
   `comment` text,
-  `cash_total` decimal(10,2) NOT NULL,
+  `amount` decimal(10,2) NOT NULL,
   `created_at` datetime NOT NULL,
   `created_by` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -45,7 +45,7 @@ CREATE TABLE IF NOT EXISTS `outcome` (
   KEY `created_by_idx` (`created_by`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 
-INSERT INTO `outcome` (`id`, `category_id`, `comment`, `cash_total`, `created_at`, `created_by`) VALUES
+INSERT INTO `outcome` (`id`, `category_id`, `comment`, `amount`, `created_at`, `created_by`) VALUES
 (1, 1, 'szama', '121.46', '2011-09-01 00:00:00', 2);
 
 CREATE TABLE IF NOT EXISTS `sf_guard_forgot_password` (

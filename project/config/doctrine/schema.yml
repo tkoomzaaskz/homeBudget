@@ -17,7 +17,7 @@ Outcome:
     comment:
       type: string
       notnull: false
-    cash_total:
+    amount:
       type: decimal(10,2)
       notnull: true
   relations:

@@ -1,1 +1,1 @@
-<?php echo Tools::priceFormat($outcome['cash_total'], true) ?>
+<?php echo Tools::priceFormat($outcome['amount'], true) ?>

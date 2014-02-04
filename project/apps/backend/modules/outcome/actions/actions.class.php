@@ -20,7 +20,7 @@ class outcomeActions extends autoOutcomeActions
     $root_alias = $query->getRootAlias();
     $total_data = $query
       ->limit(0)
-      ->select("SUM({$root_alias}.cash_total) AS sum")
+      ->select("SUM({$root_alias}.amount) AS sum")
       ->fetchArray();
     $this->total_count = $total_data[0]['sum'];
   }

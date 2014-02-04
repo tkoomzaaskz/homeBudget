@@ -43,8 +43,8 @@ class OutcomeFormFilter extends BaseOutcomeFormFilter
   {
     $rootAlias = $query->getRootAlias();
     if (isset($value['from']) && $value['from'])
-      $query->andWhere($rootAlias.".cash_total >= ?", $value['from']);
+      $query->andWhere($rootAlias.".amount >= ?", $value['from']);
     if (isset($value['to']) && $value['to'])
-      $query->andWhere($rootAlias.".cash_total <= ?", $value['to']);
+      $query->andWhere($rootAlias.".amount <= ?", $value['to']);
   }
 }
