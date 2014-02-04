@@ -44,7 +44,7 @@ $browser->test()->is(json_decode($content), array(
     'created_by' => 2,
     'amount' => 121.46,
     'description' => 'szama'
-));
+), true);
 
 $decoded = json_decode($content, true);
 foreach($required_fields as $field)
