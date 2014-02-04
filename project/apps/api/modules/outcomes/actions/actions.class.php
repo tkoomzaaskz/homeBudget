@@ -58,9 +58,6 @@ class outcomesActions extends sfActions {
     $outcome['id'] = (int) $outcome['id'];
     $outcome['category_id'] = (int) $outcome['category_id'];
     $outcome['created_by'] = (int) $outcome['created_by'];
-    // translate response structure
-    // to be removed when database schema is updated
-    $outcome['description'] = $outcome['comment'];
-    unset($outcome['comment']);
+    $outcome['amount'] = (float) $outcome['amount'];
   }
 }

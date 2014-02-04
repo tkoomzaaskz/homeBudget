@@ -40,6 +40,6 @@ class OutcomeForm extends BaseOutcomeForm
       $this->setDefault ('created_by', $user->getId());
     }
 
-    $this->setWidget('comment', new sfWidgetFormInputText());
+    $this->setWidget('description', new sfWidgetFormInputText());
   }
 }

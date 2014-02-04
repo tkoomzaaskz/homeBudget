@@ -14,7 +14,7 @@ Outcome:
     category_id:
       type: integer
       notnull: true
-    comment:
+    description:
       type: string
       notnull: false
     amount:

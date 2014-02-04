@@ -19,10 +19,8 @@ generator:
           label: Kategoria
         Category:
           label: Kategoria
-        comment:
-          label: Komentarz
-        comment:
-          label: Komentarz
+        description:
+          label: Opis
         amount:
           label: Kwota
         amount_range:
@@ -43,11 +41,11 @@ generator:
       filter:
         display: [ category_id, amount_range, created_by, created_at ]
       form:
-        display: [ amount, category_id, created_by, created_at, remember_date, comment ]
+        display: [ amount, category_id, created_by, created_at, remember_date, description ]
         fields:
           amount:
             attributes: { size: 10 }
-          comment:
+          description:
             attributes: { size: 50 }
       edit:
         title: Edytuj wydatek
