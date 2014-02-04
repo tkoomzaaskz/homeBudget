@@ -27,12 +27,12 @@ class Category extends BaseCategory
    *
    * @return Decimal
    */
-  public function getCashTotalSum()
+  public function getAmountSum()
   {
     $sum = 0;
     foreach ($this->getOutcomes() as $outcome)
     {
-      $sum += $outcome->getCashTotal();
+      $sum += $outcome->getAmount();
     }
     return $sum;
   }

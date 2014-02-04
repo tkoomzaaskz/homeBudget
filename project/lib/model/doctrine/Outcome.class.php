@@ -30,6 +30,6 @@ class Outcome extends BaseOutcome
    */
   public function isExpensive()
   {
-    return ($this->getCashTotal() >= sfConfig::get('app_outcome_expensive'));
+    return ($this->getAmount() >= sfConfig::get('app_outcome_expensive'));
   }
 }
