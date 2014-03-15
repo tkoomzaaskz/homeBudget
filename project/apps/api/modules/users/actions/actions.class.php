@@ -8,53 +8,11 @@
  * @author     Tomasz Ducin <tomasz.ducin@gmail.com>
  * @version    SVN: $Id: actions.class.php
  */
-class usersActions extends sfActions
+class usersActions extends baseApiActions
 {
-  public function preExecute() {
-    $this->getResponse()->setHttpHeader('Content-type', 'application/json');
-  }
-  
-  /**
-   * Executes list action
-   *
-   * @param sfRequest A request object
-   */
-  public function executeList(sfWebRequest $request) {
-    $users = Doctrine::getTable('sfGuardUser')
-      ->findAll(Doctrine_Core::HYDRATE_ARRAY);
+  protected $db_table = 'sfGuardUser';
 
-    foreach ($users as &$user)
-      $this->typecast($user);
-
-    $result = array(
-      'meta' => array (
-        'limit' => null,
-        'next' => null,
-        'offset' => null,
-        'previous' => null,
-        'total_count' => count($users)
-      ),
-      'objects' => $users
-    );
-
-    return $this->renderText(json_encode($result));
-  }
-  
-  /**
-   * Executes show action
-   *
-   * @param sfRequest A request object
-   */
-  public function executeShow(sfWebRequest $request) {
-    $user = Doctrine::getTable('sfGuardUser')
-      ->findOneById($request->getParameter('id'))
-      ->getData();
-
-    $this->typecast($user);
-    return $this->renderText(json_encode($user));
-  }
-
-  private function typecast(&$user) {
+  protected function typecast(&$user) {
     $remove = array('algorithm', 'salt', 'password', 'is_active', 'is_super_admin', 'last_login');
     foreach ($remove as $field)
       unset($user[$field]);

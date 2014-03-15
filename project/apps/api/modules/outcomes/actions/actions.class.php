@@ -8,53 +8,11 @@
  * @author     Tomasz Ducin <tomasz.ducin@gmail.com>
  * @version    SVN: $Id: actions.class.php
  */
-class outcomesActions extends sfActions {
+class outcomesActions extends baseApiActions
+{
+  protected $db_table = 'Outcome';
 
-  public function preExecute() {
-    $this->getResponse()->setHttpHeader('Content-type', 'application/json');
-  }
-
-  /**
-   * Executes list action
-   *
-   * @param sfRequest A request object
-   */
-  public function executeList(sfWebRequest $request) {
-    $outcomes = Doctrine::getTable('Outcome')
-        ->findAll(Doctrine_Core::HYDRATE_ARRAY);
-
-    foreach ($outcomes as &$outcome)
-      $this->typecast($outcome);
-
-    $result = array(
-      'meta' => array (
-        'limit' => null,
-        'next' => null,
-        'offset' => null,
-        'previous' => null,
-        'total_count' => count($outcomes)
-      ),
-      'objects' => $outcomes
-    );
-
-    return $this->renderText(json_encode($result));
-  }
-  
-  /**
-   * Executes show action
-   *
-   * @param sfRequest A request object
-   */
-  public function executeShow(sfWebRequest $request) {
-    $outcome = Doctrine::getTable('Outcome')
-      ->findOneById($request->getParameter('id'))
-      ->getData();
-
-    $this->typecast($outcome);
-    return $this->renderText(json_encode($outcome));
-  }
-
-  private function typecast(&$outcome) {
+  protected function typecast(&$outcome) {
     $outcome['id'] = (int) $outcome['id'];
     $outcome['category_id'] = (int) $outcome['category_id'];
     $outcome['created_by'] = (int) $outcome['created_by'];
