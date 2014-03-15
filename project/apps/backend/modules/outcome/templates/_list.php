@@ -34,7 +34,7 @@
         <?php $css = '';
           if ($outcome->isExpensive()) $css .= ' emphasized';
           if ($outcome->isToday()) $css .= ' today'; ?>
-          <tr class="sf_admin_row <?php echo $odd.$css; ?>">
+          <tr class="sf_admin_row <?php echo $odd.$css; ?>" title="<?php echo ($d = $outcome->getDescription()) ? $d : 'brak komentarza' ?>">
             <?php include_partial('outcome/list_td_batch_actions', array('outcome' => $outcome, 'helper' => $helper)) ?>
             <?php include_partial('outcome/list_td_tabular', array('outcome' => $outcome)) ?>
             <?php include_partial('outcome/list_td_actions', array('outcome' => $outcome, 'helper' => $helper)) ?>
