@@ -32,7 +32,7 @@
       <div class="row-fluid">
         <div class="span3">
           <div class="well sidebar-nav">
-            <?php include_partial('menu') ?>
+            <?php include_component('main', 'menu') ?>
           </div>
         </div>
         <?php echo $sf_content ?>

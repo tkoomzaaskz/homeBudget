@@ -13,21 +13,6 @@ class outcome_categoriesActions extends baseApiActions
   protected $db_table = 'OutcomeCategory';
 
   /**
-   * Executes list action
-   *
-   * @param sfRequest A request object
-   */
-  public function executeList(sfWebRequest $request) {
-    $table = $this->getTable();
-    $categories = $table->findByType($this->db_table, Doctrine_Core::HYDRATE_ARRAY);
-
-    foreach ($categories as &$category)
-      $table->typecast($category);
-
-    return $this->format($table->wrap($categories));
-  }
-
-  /**
    * Executes show action
    *
    * @param sfRequest A request object
@@ -42,6 +27,21 @@ class outcome_categoriesActions extends baseApiActions
     else
       $table->typecast($category);
 
-    return $this->renderText(json_encode($category));
+    return $this->format($category);
+  }
+
+  /**
+   * Executes list action
+   *
+   * @param sfRequest A request object
+   */
+  public function executeList(sfWebRequest $request) {
+    $table = $this->getTable();
+    $categories = $table->findByType($this->db_table, Doctrine_Core::HYDRATE_ARRAY);
+
+    foreach ($categories as &$category)
+      $table->typecast($category);
+
+    return $this->format($table->wrap($categories));
   }
 }
