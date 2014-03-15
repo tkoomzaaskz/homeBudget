@@ -14,12 +14,12 @@ Outcome:
     category_id:
       type: integer
       notnull: true
-    description:
-      type: string
-      notnull: false
     amount:
       type: decimal(10,2)
       notnull: true
+    description:
+      type: string
+      notnull: false
   relations:
     Category:
       class: OutcomeCategory

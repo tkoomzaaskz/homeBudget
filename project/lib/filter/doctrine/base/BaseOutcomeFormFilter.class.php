@@ -14,16 +14,16 @@ abstract class BaseOutcomeFormFilter extends BaseFormFilterDoctrine
   {
     $this->setWidgets(array(
       'category_id' => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Category'), 'add_empty' => true)),
-      'description' => new sfWidgetFormFilterInput(),
       'amount'      => new sfWidgetFormFilterInput(array('with_empty' => false)),
+      'description' => new sfWidgetFormFilterInput(),
       'created_at'  => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate(), 'with_empty' => false)),
       'created_by'  => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Creator'), 'add_empty' => true)),
     ));
 
     $this->setValidators(array(
       'category_id' => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('Category'), 'column' => 'id')),
-      'description' => new sfValidatorPass(array('required' => false)),
       'amount'      => new sfValidatorSchemaFilter('text', new sfValidatorNumber(array('required' => false))),
+      'description' => new sfValidatorPass(array('required' => false)),
       'created_at'  => new sfValidatorDateRange(array('required' => false, 'from_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 00:00:00')), 'to_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 23:59:59')))),
       'created_by'  => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('Creator'), 'column' => 'id')),
     ));
@@ -47,8 +47,8 @@ abstract class BaseOutcomeFormFilter extends BaseFormFilterDoctrine
     return array(
       'id'          => 'Number',
       'category_id' => 'ForeignKey',
-      'description' => 'Text',
       'amount'      => 'Number',
+      'description' => 'Text',
       'created_at'  => 'Date',
       'created_by'  => 'ForeignKey',
     );
