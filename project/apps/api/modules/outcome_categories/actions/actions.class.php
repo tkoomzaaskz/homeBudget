@@ -24,7 +24,7 @@ class outcome_categoriesActions extends sfActions
       ->findByType('OutcomeCategory', Doctrine_Core::HYDRATE_ARRAY);
 
     foreach ($categories as &$category)
-      $this->translate($category);
+      $this->typecast($category);
 
     $result = array(
       'meta' => array (
@@ -53,12 +53,12 @@ class outcome_categoriesActions extends sfActions
     if ($category['type'] != 'OutcomeCategory')
       $category = null;
     else
-      $this->translate($category);
+      $this->typecast($category);
 
     return $this->renderText(json_encode($category));
   }
 
-  private function translate(&$category) {
+  private function typecast(&$category) {
     $category['id'] = (int) $category['id'];
     if (!is_null($category['parent_id']))
       $category['parent_id'] = (int) $category['parent_id'];

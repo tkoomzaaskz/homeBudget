@@ -24,7 +24,7 @@ class incomesActions extends sfActions
       ->findAll(Doctrine_Core::HYDRATE_ARRAY);
 
     foreach ($incomes as &$income)
-      $this->translate($income);
+      $this->typecast($income);
 
     $result = array(
       'meta' => array (
@@ -50,11 +50,11 @@ class incomesActions extends sfActions
       ->findOneById($request->getParameter('id'))
       ->getData();
 
-    $this->translate($income);
+    $this->typecast($income);
     return $this->renderText(json_encode($income));
   }
 
-  private function translate(&$income) {
+  private function typecast(&$income) {
     $income['id'] = (int) $income['id'];
     $income['category_id'] = (int) $income['category_id'];
     $income['created_by'] = (int) $income['created_by'];

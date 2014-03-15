@@ -24,7 +24,7 @@ class outcomesActions extends sfActions {
         ->findAll(Doctrine_Core::HYDRATE_ARRAY);
 
     foreach ($outcomes as &$outcome)
-      $this->translate($outcome);
+      $this->typecast($outcome);
 
     $result = array(
       'meta' => array (
@@ -50,11 +50,11 @@ class outcomesActions extends sfActions {
       ->findOneById($request->getParameter('id'))
       ->getData();
 
-    $this->translate($outcome);
+    $this->typecast($outcome);
     return $this->renderText(json_encode($outcome));
   }
 
-  private function translate(&$outcome) {
+  private function typecast(&$outcome) {
     $outcome['id'] = (int) $outcome['id'];
     $outcome['category_id'] = (int) $outcome['category_id'];
     $outcome['created_by'] = (int) $outcome['created_by'];

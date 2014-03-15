@@ -24,7 +24,7 @@ class usersActions extends sfActions
       ->findAll(Doctrine_Core::HYDRATE_ARRAY);
 
     foreach ($users as &$user)
-      $this->translate($user);
+      $this->typecast($user);
 
     $result = array(
       'meta' => array (
@@ -50,11 +50,11 @@ class usersActions extends sfActions
       ->findOneById($request->getParameter('id'))
       ->getData();
 
-    $this->translate($user);
+    $this->typecast($user);
     return $this->renderText(json_encode($user));
   }
 
-  private function translate(&$user) {
+  private function typecast(&$user) {
     $remove = array('algorithm', 'salt', 'password', 'is_active', 'is_super_admin', 'last_login');
     foreach ($remove as $field)
       unset($user[$field]);
