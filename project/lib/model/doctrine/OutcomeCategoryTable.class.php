@@ -33,4 +33,13 @@ class OutcomeCategoryTable extends CategoryTable
       ->leftJoin('c.Outcomes o'.$clause)
       ->orderBy('c.name ASC');
   }
+
+  public function typecast(&$category) {
+    $category['id'] = (int) $category['id'];
+    if (!is_null($category['parent_id']))
+      $category['parent_id'] = (int) $category['parent_id'];
+    unset($category['type']);
+    unset($category['created_by']);
+    unset($category['updated_by']);
+  }
 }

@@ -52,4 +52,11 @@ class IncomeTable extends DuckDoctrineTable
       ->leftJoin('i.Creator cr')
       ->orderBy('i.created_at DESC');
   }
+
+  public function typecast(&$income) {
+    $income['id'] = (int) $income['id'];
+    $income['category_id'] = (int) $income['category_id'];
+    $income['created_by'] = (int) $income['created_by'];
+    $income['amount'] = (float) $income['amount'];
+  }
 }

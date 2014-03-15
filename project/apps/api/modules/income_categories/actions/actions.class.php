@@ -10,7 +10,7 @@
  */
 class income_categoriesActions extends baseApiActions
 {
-  protected $db_table = 'Category';
+  protected $db_table = 'IncomeCategory';
 
   /**
    * Executes list action
@@ -19,10 +19,10 @@ class income_categoriesActions extends baseApiActions
    */
   public function executeList(sfWebRequest $request) {
     $table = $this->getTable();
-    $categories = $table->findByType('IncomeCategory', Doctrine_Core::HYDRATE_ARRAY);
+    $categories = $table->findByType($this->db_table, Doctrine_Core::HYDRATE_ARRAY);
 
     foreach ($categories as &$category)
-      $this->typecast($category);
+      $table->typecast($category);
 
     return $this->format($table->wrap($categories));
   }
@@ -33,24 +33,15 @@ class income_categoriesActions extends baseApiActions
    * @param sfRequest A request object
    */
   public function executeShow(sfWebRequest $request) {
-    $category = Doctrine::getTable('Category')
-      ->findOneById($request->getParameter('id'))
+    $table = $this->getTable();
+    $category = $table->findOneById($request->getParameter('id'))
       ->getData();
 
-    if ($category['type'] != 'IncomeCategory')
+    if ($category['type'] != $this->db_table)
       $category = null;
     else
-      $this->typecast($category);
+      $table->typecast($category);
 
     return $this->renderText(json_encode($category));
-  }
-
-  protected function typecast(&$category) {
-    $category['id'] = (int) $category['id'];
-    if (!is_null($category['parent_id']))
-      $category['parent_id'] = (int) $category['parent_id'];
-    unset($category['type']);
-    unset($category['created_by']);
-    unset($category['updated_by']);
   }
 }

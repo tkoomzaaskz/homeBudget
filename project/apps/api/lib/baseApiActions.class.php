@@ -20,11 +20,11 @@ class baseApiActions extends sfActions {
    * @param sfRequest A request object
    */
   public function executeShow(sfWebRequest $request) {
-    $record = $this->getTable()
-      ->findOneById($request->getParameter('id'))
+    $table = $this->getTable();
+    $record = $table->findOneById($request->getParameter('id'))
       ->getData();
 
-    $this->typecast($record);
+    $table->typecast($record);
     return $this->format($record);
   }
 
@@ -38,7 +38,7 @@ class baseApiActions extends sfActions {
     $records = $table->findAll(Doctrine_Core::HYDRATE_ARRAY);
 
     foreach ($records as &$record)
-      $this->typecast($record);
+      $table->typecast($record);
 
     return $this->format($table->wrap($records));
   }

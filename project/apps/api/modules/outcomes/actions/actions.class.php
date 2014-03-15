@@ -11,11 +11,4 @@
 class outcomesActions extends baseApiActions
 {
   protected $db_table = 'Outcome';
-
-  protected function typecast(&$outcome) {
-    $outcome['id'] = (int) $outcome['id'];
-    $outcome['category_id'] = (int) $outcome['category_id'];
-    $outcome['created_by'] = (int) $outcome['created_by'];
-    $outcome['amount'] = (float) $outcome['amount'];
-  }
 }

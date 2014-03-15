@@ -53,4 +53,11 @@ class OutcomeTable extends DuckDoctrineTable
       ->leftJoin('o.Creator cr')
       ->orderBy('o.created_at DESC');
   }
+
+  public function typecast(&$outcome) {
+    $outcome['id'] = (int) $outcome['id'];
+    $outcome['category_id'] = (int) $outcome['category_id'];
+    $outcome['created_by'] = (int) $outcome['created_by'];
+    $outcome['amount'] = (float) $outcome['amount'];
+  }
 }

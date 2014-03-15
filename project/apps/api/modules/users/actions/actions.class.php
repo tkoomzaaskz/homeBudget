@@ -11,11 +11,4 @@
 class usersActions extends baseApiActions
 {
   protected $db_table = 'sfGuardUser';
-
-  protected function typecast(&$user) {
-    $remove = array('algorithm', 'salt', 'password', 'is_active', 'is_super_admin', 'last_login');
-    foreach ($remove as $field)
-      unset($user[$field]);
-    $user['id'] = (int) $user['id'];
-  }
 }
