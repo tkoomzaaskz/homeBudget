@@ -1,15 +1,15 @@
 # You can find more information about this file on the symfony website:
 # http://www.symfony-project.org/reference/1_4/en/10-Routing
 
-show:
+instance:
   url:   /:module/:id
-  param: { action: show }
+  param: { action: instance }
   requirements:
     id: \d+
 
-list:
+collection:
   url:   /:module
-  param: { action: list }
+  param: { action: collection }
 
 command:
   url:   /command/:action

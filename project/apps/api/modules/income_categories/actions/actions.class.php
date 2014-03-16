@@ -13,11 +13,11 @@ class income_categoriesActions extends baseApiActions
   protected $db_table = 'IncomeCategory';
 
   /**
-   * Executes show action
+   * Executes instance action
    *
    * @param sfRequest A request object
    */
-  public function executeShow(sfWebRequest $request)
+  public function executeInstance(sfWebRequest $request)
   {
     $table = $this->getTable();
     $category = $table->findOneById($request->getParameter('id'))
@@ -32,11 +32,11 @@ class income_categoriesActions extends baseApiActions
   }
 
   /**
-   * Executes list action
+   * Executes collection action
    *
    * @param sfRequest A request object
    */
-  public function executeList(sfWebRequest $request)
+  public function executeCollection(sfWebRequest $request)
   {
     $table = $this->getTable();
     $categories = $table->findByType($this->db_table, Doctrine_Core::HYDRATE_ARRAY);

@@ -11,4 +11,6 @@
 class outcomesActions extends baseApiActions
 {
   protected $db_table = 'Outcome';
+
+  protected $required = array('category_id', 'amount', 'created_by');
 }

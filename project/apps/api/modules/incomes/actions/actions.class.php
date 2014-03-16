@@ -11,4 +11,6 @@
 class incomesActions extends baseApiActions
 {
   protected $db_table = 'Income';
+
+  protected $required = array('category_id', 'amount', 'created_by');
 }
