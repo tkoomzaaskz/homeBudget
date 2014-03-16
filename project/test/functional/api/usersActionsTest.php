@@ -10,7 +10,7 @@ $browser = new sfTestFunctional(new sfBrowser());
 $browser->get('/users')->
   with('request')->begin()->
     isParameter('module', 'users')->
-    isParameter('action', 'list')->
+    isParameter('action', 'collection')->
   end();
 
 $response = $browser->getResponse();
@@ -29,7 +29,7 @@ $browser = new sfTestFunctional(new sfBrowser());
 $browser->get('/users/1')->
   with('request')->begin()->
     isParameter('module', 'users')->
-    isParameter('action', 'show')->
+    isParameter('action', 'instance')->
     isParameter('id', '1')->
   end();
 

@@ -8,7 +8,7 @@ $browser = new sfTestFunctional(new sfBrowser());
 $browser->get('/outcome_categories')->
   with('request')->begin()->
     isParameter('module', 'outcome_categories')->
-    isParameter('action', 'list')->
+    isParameter('action', 'collection')->
   end();
 
 $response = $browser->getResponse();
