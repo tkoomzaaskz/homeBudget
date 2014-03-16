@@ -3,12 +3,15 @@ language: php
 php:
   - 5.2
   - 5.3
+  - 5.4
 
 before_script:
+  - git submodule init
+  - git submodule update
   - php project/symfony project:permissions
-  - mysql -e "CREATE DATABASE duck_symfony;"
-  - mysql duck_symfony < project/data/sql/schema.sql
-  - mysql duck_symfony < project/data/sql/fixtures.sql
+  - mysql -e "CREATE DATABASE duck_symfony_test;"
+  - mysql duck_symfony_test < project/data/sql/schema.sql
+  - mysql duck_symfony_test < project/data/sql/fixtures.sql
   - cp project/config/databases.travis.yml project/config/databases.yml
 
 script:

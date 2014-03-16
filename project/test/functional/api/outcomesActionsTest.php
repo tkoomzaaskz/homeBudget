@@ -39,11 +39,11 @@ $browser->test()->is($response->getHttpHeader('content-type'), 'application/json
 $content = $response->getContent();
 $browser->test()->is(json_decode($content, true), array(
     'id' => 1,
-    'category_id' => 1,
-    'created_at' => '2011-09-01 00:00:00',
+    'category_id' => 35,
+    'created_at' => '2000-10-07 17:38:21',
     'created_by' => 2,
-    'amount' => 121.46,
-    'description' => 'szama'
+    'amount' => 284.78,
+    'description' => '284.78 spent for books stuff by John Lennon'
 ));
 
 $decoded = json_decode($content, true);
