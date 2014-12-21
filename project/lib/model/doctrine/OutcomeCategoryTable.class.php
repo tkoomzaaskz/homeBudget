@@ -21,7 +21,7 @@ class OutcomeCategoryTable extends CategoryTable
    * Returns query retrieving all categories with outcomes. Used in Category Pie
    * chart.
    *
-   * @param Array $chart - from/to
+   * @param Array $chart - from/to/*created_by
    * @return object Doctrine_Query
    */
   public function getAllCategoriesWithOutcomesQuery($chart)

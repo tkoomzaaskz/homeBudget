@@ -103,7 +103,7 @@ class ChartDataManager
   /**
    * Returns data for Category Pie chart. Sums up all outcomes of all categories.
    *
-   * @param Array $chart - (optional) from/to
+   * @param Array $chart - (optional) from/to/*created_by
    * @return Array
    */
   static public function getCategoryPieData($chart)
@@ -148,7 +148,7 @@ class ChartDataManager
    * Returns data for Monthly Balance Bars chart. Sums up all incomes and
    * outcomes and compares them.
    *
-   * @param Array $chart - (optional) from/to
+   * @param Array $chart - (optional) from/to/*created_by
    * @return Array - structure:
    * array
    *   'keys' =>

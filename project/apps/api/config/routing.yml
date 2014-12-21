@@ -11,6 +11,10 @@ collection:
   url:   /:module
   param: { action: collection }
 
+chart:
+  url:   /chart/:action
+  param: { module: chart }
+
 command:
   url:   /command/:action
   param: { module: main }

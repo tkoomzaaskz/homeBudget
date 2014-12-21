@@ -24,11 +24,11 @@ class mainActions extends sfActions
    *
    * @param sfRequest A request object
    */
-  public function executeUsers(sfWebRequest $request)
+  public function executeModelUsers(sfWebRequest $request)
   {
     $this->urls = array(
-      'list' => '@list?module=users',
-      'single' => '@show?module=users&id=1'
+      'collection' => '@collection?module=users',
+      'instance' => '@instance?module=users&id=1'
     );
     $this->command = 'users';
     $this->setTemplate('command');
@@ -39,11 +39,11 @@ class mainActions extends sfActions
    *
    * @param sfRequest A request object
    */
-  public function executeIncomes(sfWebRequest $request)
+  public function executeModelIncomes(sfWebRequest $request)
   {
     $this->urls = array(
-      'list' => '@list?module=incomes',
-      'single' => '@show?module=incomes&id=1'
+      'collection' => '@collection?module=incomes',
+      'instance' => '@instance?module=incomes&id=1'
     );
     $this->command = 'incomes';
     $this->setTemplate('command');
@@ -54,11 +54,11 @@ class mainActions extends sfActions
    *
    * @param sfRequest A request object
    */
-  public function executeOutcomes(sfWebRequest $request)
+  public function executeModelOutcomes(sfWebRequest $request)
   {
     $this->urls = array(
-      'list' => '@list?module=outcomes',
-      'single' => '@show?module=outcomes&id=1'
+      'collection' => '@collection?module=outcomes',
+      'instance' => '@instance?module=outcomes&id=1'
     );
     $this->command = 'outcomes';
     $this->setTemplate('command');
@@ -69,11 +69,11 @@ class mainActions extends sfActions
    *
    * @param sfRequest A request object
    */
-  public function executeIncomeCategories(sfWebRequest $request)
+  public function executeModelIncomeCategories(sfWebRequest $request)
   {
     $this->urls = array(
-      'list' => '@list?module=income_categories',
-      'single' => '@show?module=income_categories&id=35'
+      'collection' => '@collection?module=income_categories',
+      'instance' => '@instance?module=income_categories&id=35'
     );
     $this->command = 'income_categories';
     $this->setTemplate('command');
@@ -84,13 +84,44 @@ class mainActions extends sfActions
    *
    * @param sfRequest A request object
    */
-  public function executeOutcomeCategories(sfWebRequest $request)
+  public function executeModelOutcomeCategories(sfWebRequest $request)
   {
     $this->urls = array(
-      'list' => '@list?module=outcome_categories',
-      'single' => '@show?module=outcome_categories&id=1'
+      'collection' => '@collection?module=outcome_categories',
+      'instance' => '@instance?module=outcome_categories&id=1'
     );
     $this->command = 'outcome_categories';
+    $this->setTemplate('command');
+  }
+
+  /**
+   * Executes chartCategoryPie action. Displays category pie chart command description.
+   *
+   * @param sfRequest A request object
+   */
+  public function executeChartCategoryPie(sfWebRequest $request)
+  {
+    $this->urls = array(
+      'example' => '@chart?action=categoryPie&date_from=2012-12-21&date_to=2013-01-27&created_by=2',
+      'example sum subcategories' => '@chart?action=categoryPie&date_from=2012-12-21&date_to=2013-01-27&created_by=2&sum_subcategories=true',
+    );
+    $this->command = 'chart_category_pie';
+    $this->setTemplate('command');
+  }
+
+  /**
+   * Executes chartMonthlyBalanceBars action. Displays monthly balance bars chart command description.
+   *
+   * @param sfRequest A request object
+   */
+  public function executeChartMonthlyBalanceBars(sfWebRequest $request)
+  {
+    // days are not taken into account (truncated, these are monthly calculations)
+    $this->urls = array(
+      'example' => '@chart?action=monthlyBalanceBars&date_from=2012-12&date_to=2013-04&created_by=2',
+      'example sum periods' => '@chart?action=monthlyBalanceBars&date_from=2012-12&date_to=2013-04&created_by=2&sum_periods=true',
+    );
+    $this->command = 'chart_monthly_balance_bars';
     $this->setTemplate('command');
   }
 }
