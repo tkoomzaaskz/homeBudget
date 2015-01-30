@@ -16,7 +16,7 @@ class BaseChartForm extends BaseForm
   {
     $start = 2010;
     $end = date("Y");
-    $years = range(2010, 2014);
+    $years = range($start, $end);
     return array_combine($years, $years);
   }
 
