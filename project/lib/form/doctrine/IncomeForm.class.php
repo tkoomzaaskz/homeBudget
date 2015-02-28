@@ -27,5 +27,12 @@ class IncomeForm extends BaseIncomeForm
       $this->setDefault ('created_at', date('Y-m-d 00:00:00'));
       $this->setDefault ('created_by', sfContext::getInstance()->getUser()->getId());
     }
+
+    $this->setValidator('amount', new sfValidatorString(array('max_length' => 64)));
+  }
+
+  protected function updateAmountColumn($value)
+  {
+    return Tools::processMoneyStrToFloat($value);
   }
 }
