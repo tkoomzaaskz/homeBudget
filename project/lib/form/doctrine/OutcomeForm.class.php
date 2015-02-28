@@ -20,6 +20,8 @@ class OutcomeForm extends BaseOutcomeForm
         'table_method' => 'getCategoryTreeCollection',)
     ));
 
+    $this->setValidator('amount', new sfValidatorString(array('max_length' => 64)));
+
     $this->setWidget('remember_date',
       new sfWidgetFormInputCheckbox(
     ));
@@ -41,5 +43,10 @@ class OutcomeForm extends BaseOutcomeForm
     }
 
     $this->setWidget('description', new sfWidgetFormInputText());
+  }
+
+  protected function updateAmountColumn($value)
+  {
+    return Tools::processMoneyStrToFloat($value);
   }
 }
