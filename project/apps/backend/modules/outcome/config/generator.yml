@@ -39,7 +39,7 @@ generator:
         max_per_page: 20
         table_method: getOutcomesBackendListQuery
       filter:
-        display: [ category_id, amount_range, created_by, created_at ]
+        display: [ category_id, amount_range, description, created_by, created_at ]
       form:
         display: [ amount, category_id, created_by, created_at, remember_date, description ]
         fields:
