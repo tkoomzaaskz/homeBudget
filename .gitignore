@@ -16,3 +16,4 @@ public_html/web/*Plugin/*
 public_html/error_log
 
 nbproject/
+.idea/

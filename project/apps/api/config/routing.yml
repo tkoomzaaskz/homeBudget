@@ -11,9 +11,35 @@ collection:
   url:   /:module
   param: { action: collection }
 
+
+
+income_categories_collection:
+  url:   /categories/incomes
+  param: { module: income_categories, action: collection }
+
+income_categories_instance:
+  url:   /categories/incomes/:id
+  param: { module: income_categories, action: instance }
+  requirements:
+    id: \d+
+
+outcome_categories_collection:
+  url:   /categories/outcomes
+  param: { module: outcome_categories, action: collection }
+
+outcome_categories_instance:
+  url:   /categories/outcomes/:id
+  param: { module: outcome_categories, action: instance }
+  requirements:
+    id: \d+
+
+
+
 chart:
   url:   /chart/:action
   param: { module: chart }
+
+
 
 command:
   url:   /command/:action

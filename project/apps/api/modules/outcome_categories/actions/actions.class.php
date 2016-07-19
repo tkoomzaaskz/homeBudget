@@ -44,6 +44,7 @@ class outcome_categoriesActions extends baseApiActions
     foreach ($categories as &$category)
       $table->typecast($category);
 
-    return $this->format($table->wrap($categories));
+//    return $this->format($table->wrap($categories));
+    return $this->format($categories);
   }
 }

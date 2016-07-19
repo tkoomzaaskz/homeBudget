@@ -77,7 +77,8 @@ class baseApiActions extends sfActions {
     foreach ($records as &$record)
       $table->typecast($record);
 
-    return $this->format($table->wrap($records));
+//    return $this->format($table->wrap($records));
+    return $this->format($records);
   }
 
 // FIXME: disable creating outcomes with income category and the opposite
