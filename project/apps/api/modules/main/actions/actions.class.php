@@ -72,8 +72,8 @@ class mainActions extends sfActions
   public function executeModelIncomeCategories(sfWebRequest $request)
   {
     $this->urls = array(
-      'collection' => '@collection?module=income_categories',
-      'instance' => '@instance?module=income_categories&id=35'
+      'collection' => '@income_categories_collection',
+      'instance' => '@income_categories_instance?id=35'
     );
     $this->command = 'income_categories';
     $this->setTemplate('command');
@@ -87,8 +87,8 @@ class mainActions extends sfActions
   public function executeModelOutcomeCategories(sfWebRequest $request)
   {
     $this->urls = array(
-      'collection' => '@collection?module=outcome_categories',
-      'instance' => '@instance?module=outcome_categories&id=1'
+      'collection' => '@outcome_categories_collection',
+      'instance' => '@outcome_categories_instance?id=1'
     );
     $this->command = 'outcome_categories';
     $this->setTemplate('command');
