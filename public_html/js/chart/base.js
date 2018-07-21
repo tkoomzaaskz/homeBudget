@@ -16,17 +16,6 @@ function getQueryString(url, params)
   return url + '?' + qstring.join('&');
 }
 
-function zerofill(number, length)
-{
-  var result = number.toString();
-  var pad = length - result.length;
-  while(pad > 0) {
-    result = '0' + result;
-    pad--;
-  }
-  return result;
-}
-
 function inverse(n) {
   return -n;
 }
